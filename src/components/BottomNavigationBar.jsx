@@ -7,8 +7,7 @@ import LoopIcon from '@mui/icons-material/Loop';
 import WalletIcon from '@mui/icons-material/Wallet';
 import { useState } from 'react';
 
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
+import {  createTheme } from '@mui/material/styles';
 
 const darkTheme = createTheme({
   palette: {
@@ -16,27 +15,20 @@ const darkTheme = createTheme({
   },
 });
 
-const styles = {
-  root: {
-    color: "green"
-  },
-  selected: {
-     color: "red"
-  }
-};
-
 const BottomNavigationBar = () => {
   const [value, setValue] = useState(0)
   return (
     <div>
-      <BottomNavigation theme={darkTheme} sx={{ position: 'fixed', bottom: 0, left: 0, right: 0}} elevation={3} style={styles}
+      <BottomNavigation theme={darkTheme} sx={{ position: 'fixed', bottom: 0, left: 0, right: 0}} elevation={3}
         showLabels
         value={value}
         onChange={(event, newValue) => {
           setValue(newValue);
         }}
       >
-        <BottomNavigationAction label="Home" icon={<HomeIcon style={{color:"#C0C0C0"}}/>} style={{color:"#C0C0C0"}}/>
+        <BottomNavigationAction label="Home" icon={<HomeIcon style={{color:"#C0C0C0"}}/>} style={{color:"#C0C0C0"}}
+        sx={{ color: value === 0 ? darkTheme.palette.primary.main : darkTheme.palette.text.secondary }}
+        />
         <BottomNavigationAction label="Spot" icon={<TrendingUpOutlinedIcon style={{color:"#C0C0C0"}}/>} style={{color:"#C0C0C0"}}/>
         <BottomNavigationAction label="Trading" icon={<CurrencyExchangeOutlinedIcon style={{color:"#C0C0C0"}}/>} style={{color:"#C0C0C0"}}/>
         <BottomNavigationAction label="Perpetual" icon={<LoopIcon style={{color:"#C0C0C0"}}/>} style={{color:"#C0C0C0"}}/>
