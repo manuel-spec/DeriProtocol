@@ -788,3 +788,11 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
 }
+
+.focus\:border:focus {
+  border-width: 1px;
+}
+
+.active\:border:active {
+  border-width: 1px;
+}
