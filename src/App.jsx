@@ -6,6 +6,7 @@ import Announcment from "./components/HomeComponent/Announcment"
 import CoinGraph from "./components/HomeComponent/CoinGraph"
 import Options from "./components/HomeComponent/Options"
 import FastTrading from "./components/HomeComponent/FastTrading"
+import StickyHeadTable from "./components/HomeComponent/Table"
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <CoinGraph />
         <Options />
         <FastTrading />
+        <StickyHeadTable />
     </div>
     
   )

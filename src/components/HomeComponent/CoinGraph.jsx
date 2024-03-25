@@ -4,15 +4,15 @@ const CoinGraph = () => {
     const [btcData, setBtcData] = useState(null)
     const [ethData, setEthData] = useState(null)
     const [xrpData, setXrpData] = useState(null)
-    const ws = new WebSocket("wss://stream.binance.com:9443/ws/btcusdt@trade")
+    const ws = new WebSocket("wss://stream.binance.com:9443/ws/btcusdt@trade2")
     ws.onmessage = (event) =>{
         setBtcData(JSON.parse(event.data))
     }
-    const ws1 = new WebSocket("wss://stream.binance.com:9443/ws/ethusdt@trade")
+    const ws1 = new WebSocket("wss://stream.binance.com:9443/ws/ethusdt@trade2")
     ws1.onmessage = (event) =>{
         setEthData(JSON.parse(event.data))
     }
-    const ws2 = new WebSocket("wss://stream.binance.com:9443/ws/xrpusdt@trade")
+    const ws2 = new WebSocket("wss://stream.binance.com:9443/ws/xrpusdt@trade2")
     ws2.onmessage = (event) =>{
         setXrpData(JSON.parse(event.data))
     }
