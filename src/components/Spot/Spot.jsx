@@ -184,7 +184,16 @@ const Spot = () => {
           </div>
         </div>
       </div>
-      <div>Orders</div>
+      <div className="flex flex-col text-white bg-[#0F1720] mt-2">
+        <div className="text-sm p-3 flex flex-row">
+          <div className="flex">
+            <button>Orders</button>
+          </div>
+          <div>
+            <button className="ml-3">Order recoreds</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
