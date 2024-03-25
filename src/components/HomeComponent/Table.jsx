@@ -24,9 +24,6 @@ const StickyHeadTable = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await Axios.get(
-          "https://api.coingecko.com/api/v3/search/trending"
-        );
         const response2 = await Axios.get(
           "https://tradeappapi.safepauleni.site/api/coins/"
         );
@@ -42,15 +39,6 @@ const StickyHeadTable = () => {
         }));
 
         // trending coins
-
-        const coins = response.data.coins.map((coin) => ({
-          // Check if the required properties exist before accessing them
-          coin: coin.item.symbol.toUpperCase(),
-          price: coin.item.data?.price || 0, // Default value if property is undefined
-          "24H": coin.item.data?.price_change_percentage_24h.btc || 0, // Default value if property is undefined
-          symbol: coin.item.small, // Add symbol for fetching logo
-        }));
-
         setFetchedData(
           Gainers.slice(0, 15).sort((a, b) => b["24H"] - a["24H"])
         );
