@@ -2,6 +2,7 @@ import { useState } from "react";
 import TuneIcon from "@mui/icons-material/Tune";
 import CandlestickChartOutlinedIcon from "@mui/icons-material/CandlestickChartOutlined";
 import Drawer from "@mui/material/Drawer";
+import Orders from "./Orders";
 
 const Spot = () => {
   const [open, setOpen] = useState(false);
@@ -184,16 +185,7 @@ const Spot = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col text-white bg-[#0F1720] mt-2">
-        <div className="text-sm p-3 flex flex-row">
-          <div className="flex">
-            <button>Orders</button>
-          </div>
-          <div>
-            <button className="ml-3">Order recoreds</button>
-          </div>
-        </div>
-      </div>
+      <Orders />
     </div>
   );
 };
