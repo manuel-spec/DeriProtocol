@@ -70,30 +70,59 @@ const StickyHeadTable = () => {
   return (
     <div className="overflow-hidden max-h-440 rounded-lg shadow">
       <div className="flex flex-row justify-between items-center bg-[#0F1720] w-full text-sm mt-2">
-        <button
-          className="text-white p-2 ml-3 focus:border"
-          onClick={() => {
-            setActiveComponent("Gainers");
-          }}
-        >
-          Top Gainers
-        </button>
-        <button
-          className="text-white p-2"
-          onClick={() => {
-            setActiveComponent("Losers");
-          }}
-        >
-          Top Losers
-        </button>
-        <button
-          className="text-white p-2 mr-2"
-          onClick={() => {
-            setActiveComponent("24");
-          }}
-        >
-          24H Turn Over
-        </button>
+        <div className="flex flex-col justify-center items-center mb-2">
+          <button
+            className="text-white p-2 ml-3"
+            onClick={() => {
+              setActiveComponent("Gainers");
+            }}
+          >
+            Top Gainers
+          </button>
+          <span
+            className={
+              activeComponent == "Gainers"
+                ? "border w-10 border-[#FEA453] rounded"
+                : ""
+            }
+          ></span>
+        </div>
+
+        <div className="flex flex-col justify-center items-center mb-2">
+          <button
+            className="text-white p-2"
+            onClick={() => {
+              setActiveComponent("Losers");
+            }}
+          >
+            Top Losers
+          </button>
+          <span
+            className={
+              activeComponent == "Losers"
+                ? "border w-10 border-[#FEA453] rounded"
+                : ""
+            }
+          ></span>
+        </div>
+
+        <div className="flex flex-col justify-center items-center mb-2">
+          <button
+            className="text-white p-2 mr-2"
+            onClick={() => {
+              setActiveComponent("24");
+            }}
+          >
+            24H Turn Over
+          </button>
+          <span
+            className={
+              activeComponent == "24"
+                ? "border w-10 border-[#FEA453] rounded"
+                : ""
+            }
+          ></span>
+        </div>
       </div>
 
       {activeComponent == "Gainers" && (
