@@ -9,6 +9,7 @@ import { createTheme } from "@mui/material/styles";
 import { Home } from "./HomeComponent/Home";
 import Spot from "./Spot/Spot";
 import Trade from "./Trading/Trading";
+import Perpetual from "./Perpetual/Perpetual";
 
 const darkTheme = createTheme({
   palette: {
@@ -28,7 +29,7 @@ const BottomNavigationBar = () => {
       case 2:
         return <Trade />;
       case 3:
-        return <PerpetualComponent />;
+        return <Perpetual />;
       case 4:
         return <AssetsComponent />;
       default:
@@ -87,9 +88,6 @@ const BottomNavigationBar = () => {
 
 // Define your components here
 
-const PerpetualComponent = () => (
-  <div className="text-white">Perpetual Component</div>
-);
 const AssetsComponent = () => (
   <div className="text-white">Assets Component</div>
 );
