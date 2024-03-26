@@ -3,6 +3,7 @@ import TuneIcon from "@mui/icons-material/Tune";
 import CandlestickChartOutlinedIcon from "@mui/icons-material/CandlestickChartOutlined";
 import Drawer from "@mui/material/Drawer";
 import Orders from "./Orders";
+import DateTime from "./Datetime";
 
 const Trade = () => {
   const [open, setOpen] = useState(false);
@@ -51,7 +52,7 @@ const Trade = () => {
                 className="m-4"
               />
             </button>
-            <span className="font-semibold text-white">BTC / USDT</span>
+            <span className="font-semibold text-white">DOGE / USDT</span>
           </div>
           <CandlestickChartOutlinedIcon
             style={{ font: "25", color: "#ffffff" }}
@@ -84,8 +85,11 @@ const Trade = () => {
                 Sell
               </button>
             </div>
-            <div className="mt-2">
-              <p className="text-white text-sm">Market</p>
+            <div className="flex justify-between items-center mt-2">
+              <p className="text-xs">Time</p>
+              <p>
+                <DateTime />
+              </p>
             </div>
             <div>
               <p className="text-white p-1 text-xs border border-[#35393F] rounded text-center mt-3">
