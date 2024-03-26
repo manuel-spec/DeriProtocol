@@ -12,7 +12,9 @@ export const DateTime = () => {
 
   return (
     <div>
-      <p> Time : {date.toLocaleTimeString()}</p>
+      <p className="text-white">
+        {date.toLocaleTimeString().replace("AM", "")}
+      </p>
     </div>
   );
 };

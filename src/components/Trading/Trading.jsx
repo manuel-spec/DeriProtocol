@@ -86,37 +86,53 @@ const Trade = () => {
               </button>
             </div>
             <div className="flex justify-between items-center mt-2">
-              <p className="text-xs">Time</p>
-              <p>
+              <p className="text-xs text-white">Time</p>
+              <p className="text-xs">
                 <DateTime />
               </p>
             </div>
-            <div>
-              <p className="text-white p-1 text-xs border border-[#35393F] rounded text-center mt-3">
-                70,832.93
-              </p>
+            <div className="flex justify-between items-center mt-1">
+              <p className="text-white text-xs">Trading assets</p>
+              <p className="text-[#FEA453] text-xs">USDT</p>
             </div>
-            <div className="text-white text-xs mt-1">≈ 70,832.93</div>
-            <div className="">
-              <input
-                type="text"
-                className="text-white p-1 text-xs border border-[#35393F] rounded text-center mt-3 bg-[#0F1720] active:border-[#35393F]"
-                placeholder="Enter quantity"
-              />
+            <div className="text-white text-xs flex justify-between mt-1">
+              <p>Available amount</p>
+              <p>0</p>
             </div>
-            <div className="flex flex-row text-xs text-white mt-2">
-              <div className="text-[#35393F] border rounded px-1 border-[#35393F]">
-                25%
-              </div>
-              <div className="text-[#35393F] ml-1 border rounded px-1 border-[#35393F]">
-                50%
-              </div>
-              <div className="text-[#35393F] ml-1 border rounded px-1 border-[#35393F]">
-                75%
-              </div>
-              <div className="text-[#35393F] ml-1 border rounded px-1 border-[#35393F]">
-                100%
-              </div>
+            <div className="flex justify-left text-xs text-white mt-1">
+              <p>Transaction Period</p>
+            </div>
+            <div className="flex flex-col mt-1">
+              <select
+                name=""
+                id=""
+                className="bg-[#242B34] rounded text-white text-xs py-2"
+              >
+                <option value="" className="text-xs">
+                  30s - 20%
+                </option>
+                <option value="" className="text-xs">
+                  60s - 30%
+                </option>
+                <option value="" className="text-xs">
+                  120s - 50%
+                </option>
+                <option value="" className="text-xs">
+                  24h - 60%
+                </option>
+                <option value="" className="text-xs">
+                  72h - 80%
+                </option>
+                <option value="" className="text-xs">
+                  7d - 90%
+                </option>
+                <option value="" className="text-xs">
+                  15d - 100%
+                </option>
+              </select>
+            </div>
+            <div className="flex flex-row justify-between text-xs text-white mt-2">
+              Amount
             </div>
             <div className="flex flex-col mt-3">
               <button
