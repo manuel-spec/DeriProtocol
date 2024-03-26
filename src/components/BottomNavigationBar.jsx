@@ -8,6 +8,7 @@ import { useState } from "react";
 import { createTheme } from "@mui/material/styles";
 import { Home } from "./HomeComponent/Home";
 import Spot from "./Spot/Spot";
+import Trade from "./Trading/Trading";
 
 const darkTheme = createTheme({
   palette: {
@@ -25,7 +26,7 @@ const BottomNavigationBar = () => {
       case 1:
         return <Spot />;
       case 2:
-        return <TradingComponent />;
+        return <Trade />;
       case 3:
         return <PerpetualComponent />;
       case 4:
@@ -85,9 +86,7 @@ const BottomNavigationBar = () => {
 };
 
 // Define your components here
-const TradingComponent = () => (
-  <div className="text-white">Trading Component</div>
-);
+
 const PerpetualComponent = () => (
   <div className="text-white">Perpetual Component</div>
 );
