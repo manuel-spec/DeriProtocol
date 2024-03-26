@@ -86,27 +86,27 @@ const Trade = () => {
               </button>
             </div>
             <div className="flex justify-between items-center mt-2">
-              <p className="text-xs text-white">Time</p>
+              <p className="text-xs text-[#dddddd]">Time</p>
               <p className="text-xs">
                 <DateTime />
               </p>
             </div>
             <div className="flex justify-between items-center mt-1">
-              <p className="text-white text-xs">Trading assets</p>
-              <p className="text-[#FEA453] text-xs">USDT</p>
+              <p className="text-[#dddddd] text-xs">Trading assets</p>
+              <p className="text-[#dddddd] text-xs">USDT</p>
             </div>
-            <div className="text-white text-xs flex justify-between mt-1">
+            <div className="text-[#dddddd] text-xs flex justify-between mt-1">
               <p>Available amount</p>
               <p>0</p>
             </div>
-            <div className="flex justify-left text-xs text-white mt-1">
+            <div className="flex justify-left text-xs text-[#dddddd] mt-1">
               <p>Transaction Period</p>
             </div>
             <div className="flex flex-col mt-1">
               <select
                 name=""
                 id=""
-                className="bg-[#242B34] rounded text-white text-xs py-2"
+                className="bg-[#242B34] rounded text-[#dddddd] text-xs py-2"
               >
                 <option value="" className="text-xs">
                   30s - 20%
@@ -131,10 +131,40 @@ const Trade = () => {
                 </option>
               </select>
             </div>
-            <div className="flex flex-row justify-between text-xs text-white mt-2">
+            <div className="flex flex-row justify-between text-xs text-[#dddddd] mt-2">
               Amount
             </div>
-            <div className="flex flex-col mt-3">
+            <div className="">
+              <input
+                type="text"
+                className="text-[#dddddd] p-1 text-xs border border-[#35393F] rounded text-center mt-3 bg-[#0F1720] active:border-[#35393F]"
+                placeholder="Enter quantity"
+              />
+            </div>
+            <div className="flex flex-row text-xs text-[#dddddd] mt-2">
+              <div className="text-[#35393F] border rounded px-1 border-[#35393F]">
+                25%
+              </div>
+              <div className="text-[#35393F] ml-1 border rounded px-1 border-[#35393F]">
+                50%
+              </div>
+              <div className="text-[#35393F] ml-1 border rounded px-1 border-[#35393F]">
+                75%
+              </div>
+              <div className="text-[#35393F] ml-1 border rounded px-1 border-[#35393F]">
+                100%
+              </div>
+            </div>
+            <div className="flex flex-row justify-between items-center mt-2">
+              <p className="text-xs text-white">Minimum buy </p>
+              <p className="text-xs text-white">1000</p>
+            </div>
+            <div className="flex flex-row justify-between items-center mt-2">
+              <p className="text-xs text-white">Handling Fee</p>
+              <p className="text-xs text-white">0.00</p>
+            </div>
+
+            <div className="flex flex-col mt-3 mb-3">
               <button
                 className="text-white px-6 py-1 text-sm border border-[#313840] rounded bg-[#]"
                 style={{
@@ -144,14 +174,6 @@ const Trade = () => {
               >
                 {activeButton == "short" ? "Sell" : "Buy"}
               </button>
-            </div>
-            <div className="flex flex-row justify-between items-center mt-2">
-              <p className="text-xs text-white">Availabale 0</p>
-              <p className="text-xs text-white">BTC</p>
-            </div>
-            <div className="flex flex-row justify-between items-center mt-2">
-              <p className="text-xs text-white">Max Sell 0</p>
-              <p className="text-xs text-white">USDT</p>
             </div>
           </div>
           <div className="flex flex-col mt-2 ">

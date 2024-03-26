@@ -12,7 +12,7 @@ const Orders = () => {
               setActiveButton("orders");
             }}
           >
-            Orders
+            Position Orders
           </button>
           <span
             className={
@@ -27,7 +27,7 @@ const Orders = () => {
               setActiveButton("records");
             }}
           >
-            Order records
+            Historical records
           </button>
           <span
             className={
