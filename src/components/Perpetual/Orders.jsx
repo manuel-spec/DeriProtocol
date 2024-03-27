@@ -12,7 +12,7 @@ const Orders = () => {
               setActiveButton("orders");
             }}
           >
-            Position Orders
+            Positions
           </button>
           <span
             className={
@@ -27,11 +27,41 @@ const Orders = () => {
               setActiveButton("records");
             }}
           >
-            Historical records
+            Orders
           </button>
           <span
             className={
               activeButton == "records" ? "border border-[#FEA453] w-10" : ""
+            }
+          ></span>
+        </div>
+        <div className="flex flex-col justify-center items-center">
+          <button
+            className="ml-3"
+            onClick={() => {
+              setActiveButton("history");
+            }}
+          >
+            History Orders
+          </button>
+          <span
+            className={
+              activeButton == "history" ? "border border-[#FEA453] w-10" : ""
+            }
+          ></span>
+        </div>
+        <div className="flex flex-col justify-center items-center">
+          <button
+            className="ml-3"
+            onClick={() => {
+              setActiveButton("trades");
+            }}
+          >
+            Trades
+          </button>
+          <span
+            className={
+              activeButton == "trades" ? "border border-[#FEA453] w-10" : ""
             }
           ></span>
         </div>

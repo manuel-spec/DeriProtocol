@@ -27,7 +27,7 @@ const Orders = () => {
               setActiveButton("records");
             }}
           >
-            Historical records
+            Order records
           </button>
           <span
             className={

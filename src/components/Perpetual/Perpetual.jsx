@@ -59,8 +59,25 @@ const Perpetual = () => {
             className="m-4"
           />
         </div>
+        <div className="flex flex-row justify-between text-white p-3 bg-black text-xs">
+          <div className="flex flex-col">
+            <div>Available Balance</div>
+            <div className="text-center">0</div>
+          </div>
+          <div className="flex flex-col">
+            <div>Unrealized P&L</div>
+            <div className="text-center">0</div>
+          </div>
+          <div className="flex flex-col">
+            <div>Margin rate</div>
+            <div className="text-center">--</div>
+          </div>
+        </div>
         <div className="flex flex-row justify-between bg-[#0F1720]">
           <div className="flex flex-col mt-5 ml-3">
+            <div className="flex flex-row">
+              <p className="text-white text-sm">Open Position</p>
+            </div>
             <div className="flex flex-row text-white p-2">
               <button
                 className="px-6 py-1 text-sm border border-[#313840] rounded bg-[#]"
@@ -71,7 +88,7 @@ const Perpetual = () => {
                   backgroundColor: activeButton == "long" ? "#04CF99" : "",
                 }}
               >
-                Buy
+                Long
               </button>
               <button
                 className="px-6 text-sm  border border-[#313840] rounded bg-[#]"
@@ -82,64 +99,51 @@ const Perpetual = () => {
                   backgroundColor: activeButton == "short" ? "#F36464" : "",
                 }}
               >
-                Sell
+                Short
               </button>
             </div>
-            <div className="flex justify-between items-center mt-2">
-              <p className="text-xs text-[#dddddd]">Time</p>
-              <p className="text-xs">
-                <DateTime />
-              </p>
+            <div className="flex flex-row">
+              <div>
+                <select
+                  name=""
+                  id=""
+                  className="bg-[#0F1720] ml-1 border border-[#242B34] rounded text-[#dddddd] text-xs py-2 px-6 w-50"
+                >
+                  <option value="" className="text-xs">
+                    Market
+                  </option>
+                  <option value="" className="text-xs">
+                    Limit
+                  </option>
+                </select>
+              </div>
+              <div className="flex text-white text-xs border border-[#242B34] rounded px-3 text-center items-center">
+                100 X
+              </div>
             </div>
-            <div className="flex justify-between items-center mt-1">
-              <p className="text-[#dddddd] text-xs">Trading assets</p>
-              <p className="text-[#dddddd] text-xs">USDT</p>
+            <div className="flex justify-center p-2 mt-2 text-white text-xs border border-[#242B34] rounded">
+              69702.92
             </div>
-            <div className="text-[#dddddd] text-xs flex justify-between mt-1">
-              <p>Available amount</p>
-              <p>0</p>
-            </div>
-            <div className="flex justify-left text-xs text-[#dddddd] mt-1">
-              <p>Transaction Period</p>
-            </div>
-            <div className="flex flex-col mt-1">
-              <select
-                name=""
-                id=""
-                className="bg-[#242B34] rounded text-[#dddddd] text-xs py-2"
-              >
-                <option value="" className="text-xs">
-                  30s - 20%
-                </option>
-                <option value="" className="text-xs">
-                  60s - 30%
-                </option>
-                <option value="" className="text-xs">
-                  120s - 50%
-                </option>
-                <option value="" className="text-xs">
-                  24h - 60%
-                </option>
-                <option value="" className="text-xs">
-                  72h - 80%
-                </option>
-                <option value="" className="text-xs">
-                  7d - 90%
-                </option>
-                <option value="" className="text-xs">
-                  15d - 100%
-                </option>
-              </select>
-            </div>
+
             <div className="flex flex-row justify-between text-xs text-[#dddddd] mt-2">
               Amount
             </div>
-            <div className="">
+            <div className="flex flex-row justify-center items-center">
+              <div>
+                <button className="text-white text-xs border p-1 mt-3 rounded border-[#242B34]">
+                  -
+                </button>
+              </div>
               <input
                 type="text"
                 className="text-[#dddddd] p-1 text-xs border border-[#35393F] rounded text-center mt-3 bg-[#0F1720] active:border-[#35393F]"
                 placeholder="Enter quantity"
               />
+              <div>
+                <button className="text-white p-1 rounded mt-3 text-xs text-xs border border-[#242B34]">
+                  +
+                </button>
+              </div>
             </div>
             <div className="flex flex-row text-xs text-[#dddddd] mt-2">
               <div className="text-[#35393F] border rounded px-1 border-[#35393F]">
@@ -155,13 +159,20 @@ const Perpetual = () => {
                 100%
               </div>
             </div>
-            <div className="flex flex-row justify-between items-center mt-2">
-              <p className="text-xs text-white">Minimum buy </p>
-              <p className="text-xs text-white">1000</p>
+            <div className="flex flex-row mt-2">
+              <input
+                type="checkbox"
+                className="border border-[#35393F] bg-[#0F1720]"
+              />
+              <p className="text-xs text-[#dddddd] ml-3">Take P&L</p>
             </div>
             <div className="flex flex-row justify-between items-center mt-2">
-              <p className="text-xs text-white">Handling Fee</p>
-              <p className="text-xs text-white">0.00</p>
+              <p className="text-xs text-white">Available Amount </p>
+              <p className="text-xs text-white">0 USDT</p>
+            </div>
+            <div className="flex flex-row justify-between items-center mt-2">
+              <p className="text-xs text-white">Maximum Positions</p>
+              <p className="text-xs text-white">0 Pieces</p>
             </div>
 
             <div className="flex flex-col mt-3 mb-3">
@@ -172,7 +183,7 @@ const Perpetual = () => {
                     activeButton == "short" ? "#F36464" : "#04CF99",
                 }}
               >
-                {activeButton == "short" ? "Sell" : "Buy"}
+                {activeButton == "short" ? "Buy Short" : "Buy Long"}
               </button>
             </div>
           </div>
