@@ -1,10 +1,11 @@
 import { useState } from "react";
 import Overview from "./Overview";
+import Exchange from "./Exchange";
 
 const Assets = () => {
   const [activeComponent, setActiveComponent] = useState("Overview");
   return (
-    <div>
+    <div className="bg-[#0F1720]">
       <div className="flex flex-row justify-center items-center text-[#dddddd]">
         <div className="p-2">
           <button
@@ -12,7 +13,9 @@ const Assets = () => {
               setActiveComponent("Overview");
             }}
           >
-            Overview
+            <p className={activeComponent == "Overview" ? "text-lg" : ""}>
+              Overview
+            </p>
           </button>
         </div>
         <div className="p-2">
@@ -53,6 +56,7 @@ const Assets = () => {
         </div>
       </div>
       <div>{activeComponent == "Overview" && <Overview />}</div>
+      <div>{activeComponent == "Exchange" && <Exchange />}</div>
     </div>
   );
 };

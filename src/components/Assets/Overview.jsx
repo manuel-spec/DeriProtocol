@@ -7,7 +7,7 @@ import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 
 const Overview = () => {
   return (
-    <div className="flex flex-col ml-3">
+    <div className="flex flex-col p-3">
       <div
         className="flex flex-col w-full mt-3 rounded-lg h-40  mr-3"
         style={{
