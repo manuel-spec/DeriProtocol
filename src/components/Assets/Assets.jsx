@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Overview from "./Overview";
 import Exchange from "./Exchange";
+import Trade from "./Trade";
 
 const Assets = () => {
   const [activeComponent, setActiveComponent] = useState("Overview");
@@ -57,6 +58,7 @@ const Assets = () => {
       </div>
       <div>{activeComponent == "Overview" && <Overview />}</div>
       <div>{activeComponent == "Exchange" && <Exchange />}</div>
+      <div>{activeComponent == "Trade" && <Trade />}</div>
     </div>
   );
 };
