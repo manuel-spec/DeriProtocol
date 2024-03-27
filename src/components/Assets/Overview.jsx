@@ -31,40 +31,68 @@ const Overview = () => {
         </div>
       </div>
       <div
-        className="flex w-full mt-3 rounded-lg h-40  mr-3"
+        className="flex flex-col w-full mt-3 rounded-lg h-40  mr-3"
         style={{
           backgroundImage: `url(${exchange_assets})`,
           backgroundSize: "cover",
         }}
       >
-        <p className="text-white">Total assets</p>
+        <div className="flex flex-row m-4">
+          <p className="text-[#eeeeee] text-sm mt-1 mr-2">Exchange assets</p>
+        </div>
+        <div className="text-2xl font-semibold text-white ml-4">0.00</div>
+        <div className="text-white text-xs ml-4"> ≈$ 0.00</div>
+        <div className="text-white text-sm mt-5 ml-4 font-mediumbold">
+          Daily Profit: 0.00
+        </div>
       </div>
       <div
-        className="flex w-full mt-3 rounded-lg h-40  mr-3"
+        className="flex flex-col w-full mt-3 rounded-lg h-40  mr-3"
         style={{
           backgroundImage: `url(${trade_assets})`,
           backgroundSize: "cover",
         }}
       >
-        <p className="text-white">Total assets</p>
+        <div className="flex flex-row m-4">
+          <p className="text-[#eeeeee] text-sm mt-1 mr-2">Trade assets</p>
+        </div>
+        <div className="text-2xl font-semibold text-white ml-4">0.00</div>
+        <div className="text-white text-xs ml-4"> ≈$ 0.00</div>
+        <div className="text-white text-sm mt-5 ml-4 font-mediumbold">
+          Daily Profit: 0.00
+        </div>
       </div>
       <div
-        className="flex w-full mt-3 rounded-lg h-40  mr-3"
+        className="flex flex-col w-full mt-3 rounded-lg h-40  mr-3"
         style={{
           backgroundImage: `url(${perpetual_assets})`,
           backgroundSize: "cover",
         }}
       >
-        <p className="text-white">Total assets</p>
+        <div className="flex flex-row m-4">
+          <p className="text-[#eeeeee] text-sm mt-1 mr-2">Perpetual assets</p>
+        </div>
+        <div className="text-2xl font-semibold text-white ml-4">0.00</div>
+        <div className="text-white text-xs ml-4"> ≈$ 0.00</div>
+        <div className="text-white text-sm mt-5 ml-4 font-mediumbold">
+          Daily Profit: 0.00
+        </div>
       </div>
       <div
-        className="flex w-full mt-3 rounded-lg h-40  mr-3"
+        className="flex flex-col w-full mt-3 rounded-lg h-40  mr-3"
         style={{
           backgroundImage: `url(${finance_assets})`,
           backgroundSize: "cover",
         }}
       >
-        <p className="text-white">Total assets</p>
+        <div className="flex flex-row m-4">
+          <p className="text-[#eeeeee] text-sm mt-1 mr-2">Finance assets</p>
+        </div>
+        <div className="text-2xl font-semibold text-white ml-4">0.00</div>
+        <div className="text-white text-xs ml-4"> ≈$ 0.00</div>
+        <div className="text-white text-sm mt-5 ml-4 font-mediumbold">
+          Daily Profit: 0.00
+        </div>
       </div>
     </div>
   );
