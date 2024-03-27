@@ -3,7 +3,6 @@ import TuneIcon from "@mui/icons-material/Tune";
 import CandlestickChartOutlinedIcon from "@mui/icons-material/CandlestickChartOutlined";
 import Drawer from "@mui/material/Drawer";
 import Orders from "./Orders";
-import DateTime from "./Datetime";
 
 const Perpetual = () => {
   const [open, setOpen] = useState(false);

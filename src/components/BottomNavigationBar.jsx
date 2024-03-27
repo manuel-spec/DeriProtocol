@@ -10,6 +10,7 @@ import { Home } from "./HomeComponent/Home";
 import Spot from "./Spot/Spot";
 import Trade from "./Trading/Trading";
 import Perpetual from "./Perpetual/Perpetual";
+import Assets from "./Assets/Assets";
 
 const darkTheme = createTheme({
   palette: {
@@ -31,7 +32,7 @@ const BottomNavigationBar = () => {
       case 3:
         return <Perpetual />;
       case 4:
-        return <AssetsComponent />;
+        return <Assets />;
       default:
         return null;
     }
@@ -85,11 +86,5 @@ const BottomNavigationBar = () => {
     </div>
   );
 };
-
-// Define your components here
-
-const AssetsComponent = () => (
-  <div className="text-white">Assets Component</div>
-);
 
 export default BottomNavigationBar;
