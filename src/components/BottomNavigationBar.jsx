@@ -1,7 +1,7 @@
 import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 import { useState } from "react";
 import { createTheme } from "@mui/material/styles";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import home from "../assets/icons/nav/home.png";
 import spot from "../assets/icons/nav/spot.png";
 import trading from "../assets/icons/nav/trading.png";
@@ -21,6 +21,7 @@ const darkTheme = createTheme({
 
 const BottomNavigationBar = () => {
   const [value, setValue] = useState(0);
+  const location = useLocation();
   return (
     <div>
       <BottomNavigation
