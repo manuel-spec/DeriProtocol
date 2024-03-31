@@ -21,26 +21,8 @@ const darkTheme = createTheme({
 const BottomNavigationBar = () => {
   const [value, setValue] = useState(0);
 
-  const renderSelectedComponent = () => {
-    switch (value) {
-      case 0:
-        return <Home />;
-      case 1:
-        return <Spot />;
-      case 2:
-        return <Trade />;
-      case 3:
-        return <Perpetual />;
-      case 4:
-        return <Assets />;
-      default:
-        return null;
-    }
-  };
-
   return (
     <div>
-      {renderSelectedComponent()}
       <BottomNavigation
         theme={darkTheme}
         sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
