@@ -3,6 +3,7 @@ import Overview from "./Overview";
 import Exchange from "./Exchange";
 import Trade from "./Trade";
 import Perpetual from "./Perpetual";
+import Finance from "./Finance";
 
 const Assets = () => {
   const [activeComponent, setActiveComponent] = useState("Overview");
@@ -61,6 +62,7 @@ const Assets = () => {
       <div>{activeComponent == "Exchange" && <Exchange />}</div>
       <div>{activeComponent == "Trade" && <Trade />}</div>
       <div>{activeComponent == "Perpetual" && <Perpetual />}</div>
+      <div>{activeComponent == "Finance" && <Finance />}</div>
     </div>
   );
 };
