@@ -6,11 +6,7 @@ import LoopIcon from "@mui/icons-material/Loop";
 import WalletIcon from "@mui/icons-material/Wallet";
 import { useState } from "react";
 import { createTheme } from "@mui/material/styles";
-import { Home } from "./HomeComponent/Home";
-import Spot from "./Spot/Spot";
-import Trade from "./Trading/Trading";
-import Perpetual from "./Perpetual/Perpetual";
-import Assets from "./Assets/Assets";
+import { Link } from "react-router-dom";
 
 const darkTheme = createTheme({
   palette: {
@@ -33,37 +29,38 @@ const BottomNavigationBar = () => {
           setValue(newValue);
         }}
       >
-        <BottomNavigationAction
-          label="Home"
-          icon={<HomeIcon style={{ color: "#C0C0C0" }} />}
-          style={{ color: "#C0C0C0" }}
-          sx={{
-            color:
-              value === 0
-                ? darkTheme.palette.primary.main
-                : darkTheme.palette.text.secondary,
-          }}
-        />
-        <BottomNavigationAction
-          label="Spot"
-          icon={<TrendingUpOutlinedIcon style={{ color: "#C0C0C0" }} />}
-          style={{ color: "#C0C0C0" }}
-        />
-        <BottomNavigationAction
-          label="Trading"
-          icon={<CurrencyExchangeOutlinedIcon style={{ color: "#C0C0C0" }} />}
-          style={{ color: "#C0C0C0" }}
-        />
-        <BottomNavigationAction
-          label="Perpetual"
-          icon={<LoopIcon style={{ color: "#C0C0C0" }} />}
-          style={{ color: "#C0C0C0" }}
-        />
-        <BottomNavigationAction
-          label="Assets"
-          icon={<WalletIcon style={{ color: "#C0C0C0" }} />}
-          style={{ color: "#C0C0C0" }}
-        />
+        <Link to="/" className="text-white flex flex-col justify-center p-2">
+          <HomeIcon style={{ color: "#C0C0C0" }} className="" />
+          <p className="text-xs text-center">Home</p>
+        </Link>
+        <Link
+          to="/spot"
+          className="text-white flex flex-col justify-center p-2"
+        >
+          <TrendingUpOutlinedIcon style={{ color: "#C0C0C0" }} />
+          <p className="text-xs text-center">Spot</p>
+        </Link>
+        <Link
+          to="/trade"
+          className="text-white flex flex-col justify-center p-2"
+        >
+          <CurrencyExchangeOutlinedIcon style={{ color: "#C0C0C0" }} />
+          <p className="text-xs text-center">Trading</p>
+        </Link>
+        <Link
+          to="/perpetual"
+          className="text-white flex flex-col justify-center p-2"
+        >
+          <LoopIcon style={{ color: "#C0C0C0" }} />
+          <p className="text-xs text-center">Perpetual</p>
+        </Link>
+        <Link
+          to="/assets"
+          className="text-white flex flex-col justify-center p-2"
+        >
+          <WalletIcon style={{ color: "#C0C0C0" }} />
+          <p className="text-xs text-center">Assets</p>
+        </Link>
       </BottomNavigation>
     </div>
   );
