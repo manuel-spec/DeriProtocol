@@ -9,23 +9,25 @@ import Perpetual from "./components/Perpetual/Perpetual.jsx";
 import Assets from "./components/Assets/Assets.jsx";
 import SignIn from "./components/Auth/SignIn.jsx";
 import { useCookies } from "react-cookie";
+import Cookies from "universal-cookie";
 import { useNavigate } from "react-router-dom";
 import SignUP from "./components/Auth/SignUp.jsx";
 
 const ProtectedRoute = ({ element: Component }) => {
-  const [cookies] = useCookies(["jwtToken"]);
+  const cookies = new Cookies();
+  const token = cookies.get("jwt");
   const navigate = useNavigate();
 
   useEffect(() => {
     // Check if JWT token exists
-    if (!cookies.jwtToken) {
+    if (!token) {
       // Redirect to sign-in page if token doesn't exist
       navigate("/auth/signin");
     }
-  }, [cookies.jwtToken, navigate]);
+  }, [token, navigate]);
 
   // Render the component if token exists
-  return cookies.jwtToken ? <Component /> : null;
+  return token ? <Component /> : null;
 };
 
 const router = createBrowserRouter([
