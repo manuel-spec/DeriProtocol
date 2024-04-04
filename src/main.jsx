@@ -10,6 +10,7 @@ import Assets from "./components/Assets/Assets.jsx";
 import SignIn from "./components/Auth/SignIn.jsx";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
+import SignUP from "./components/Auth/SignUp.jsx";
 
 const ProtectedRoute = ({ element: Component }) => {
   const [cookies] = useCookies(["jwtToken"]);
@@ -34,27 +35,31 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <ProtectedRoute element={Home} />,
+        element: <Home />,
       },
       {
         path: "/spot",
-        element: <Spot />,
+        element: <ProtectedRoute element={Spot} />,
       },
       {
         path: "/trade",
-        element: <Trade />,
+        element: <ProtectedRoute element={Trade} />,
       },
       {
         path: "/perpetual",
-        element: <Perpetual />,
+        element: <ProtectedRoute element={Perpetual} />,
       },
       {
         path: "/assets",
-        element: <Assets />,
+        element: <ProtectedRoute element={Assets} />,
       },
       {
         path: "auth/signin",
         element: <SignIn />,
+      },
+      {
+        path: "auth/register",
+        element: <SignUP />,
       },
     ],
   },

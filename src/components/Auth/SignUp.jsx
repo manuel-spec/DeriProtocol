@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-const SignIn = () => {
+const SignUP = () => {
   const handleForm = (e) => {
     e.preventDefault();
   };
@@ -8,7 +8,7 @@ const SignIn = () => {
       <div className="flex flex-col">
         <div className="mt-10">
           <h2 className="text-center text-2xl text-white font-semibold">
-            SignIn
+            Register
           </h2>
         </div>
         <form
@@ -27,13 +27,14 @@ const SignIn = () => {
           />
           <input
             type="submit"
-            value="Sign in"
+            value="Register"
             className="text-white mt-10 bg-[#222c38] p-2 rounded-lg active:bg-[#F0C163] active:text-black"
           />
         </form>
         <div className="flex flex-row justify-end mr-10">
-          <Link to="/auth/register">
-            <p className="text-white">register</p>
+          <p className="text-white mr-4"> already have an account ?</p>
+          <Link to="/auth/signin">
+            <p className="text-white">login</p>
           </Link>
         </div>
       </div>
@@ -41,4 +42,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUP;
