@@ -5,10 +5,26 @@ import CoinGraph from "./CoinGraph";
 import Options from "./Options";
 import FastTrading from "./FastTrading";
 import StickyHeadTable from "./Table";
-import { Drawer } from "@mui/material";
+import { Box, Drawer, Modal } from "@mui/material";
 import { useState } from "react";
 import PersonPinIcon from "@mui/icons-material/PersonPin";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
+import Basic from "./Identity/Basic";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  pt: 2,
+  px: 4,
+  pb: 3,
+};
 
 export const Home = () => {
   const [open, setOpen] = useState(false);
@@ -16,8 +32,30 @@ export const Home = () => {
     setOpen(open);
   };
 
+  const [openModal, setOpenModal] = useState(false);
+  const handleClose = () => {
+    setOpenModal(false);
+  };
   return (
     <div>
+      <Modal
+        open={openModal}
+        onClose={handleClose}
+        aria-labelledby="parent-modal-title"
+        aria-describedby="parent-modal-description"
+      >
+        <Box sx={{ ...style, backgroundColor: "#0F1720" }} className="h-full">
+          <button onClick={() => setOpenModal(false)}>
+            <div className="flex flex-row justify-between items-center text-center">
+              <ArrowBackIcon className="text-white" />
+              <p className="text-white font-bold ml-16">
+                Basic Identity Verification
+              </p>
+            </div>
+          </button>
+          <Basic />
+        </Box>
+      </Modal>
       <Drawer open={open} onClose={() => toggleDrawer(false)}>
         <div className="h-full bg-[#0F1720] ">
           <div className="flex flex-col text-white">
@@ -27,7 +65,10 @@ export const Home = () => {
               <div className="p-2  ">
                 <p className="text-center">email.test@mail.to</p>
               </div>
-              <div className=" m-4 flex flex-row justify-between items-center bg-[#F0C163] py-4 px-5 text-sm ">
+              <div
+                className=" m-4 flex flex-row justify-between items-center bg-[#F0C163] py-4 px-5 text-sm"
+                onClick={() => setOpenModal(true)}
+              >
                 <div className="flex flex-col">
                   <p className="font-semibold"> Basic Verification</p>
                   <p className="text-xs">not certified</p>

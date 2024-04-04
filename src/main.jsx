@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -7,6 +7,25 @@ import Spot from "./components/Spot/Spot.jsx";
 import Trade from "./components/Trading/Trading.jsx";
 import Perpetual from "./components/Perpetual/Perpetual.jsx";
 import Assets from "./components/Assets/Assets.jsx";
+import SignIn from "./components/Auth/SignIn.jsx";
+import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
+
+const ProtectedRoute = ({ element: Component }) => {
+  const [cookies] = useCookies(["jwtToken"]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check if JWT token exists
+    if (!cookies.jwtToken) {
+      // Redirect to sign-in page if token doesn't exist
+      navigate("/auth/signin");
+    }
+  }, [cookies.jwtToken, navigate]);
+
+  // Render the component if token exists
+  return cookies.jwtToken ? <Component /> : null;
+};
 
 const router = createBrowserRouter([
   {
@@ -15,7 +34,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: <ProtectedRoute element={Home} />,
       },
       {
         path: "/spot",
@@ -32,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: "/assets",
         element: <Assets />,
+      },
+      {
+        path: "auth/signin",
+        element: <SignIn />,
       },
     ],
   },

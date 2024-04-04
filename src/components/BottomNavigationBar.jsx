@@ -1,4 +1,4 @@
-import { BottomNavigation, BottomNavigationAction } from "@mui/material";
+import { BottomNavigation } from "@mui/material";
 import { useState } from "react";
 import { createTheme } from "@mui/material/styles";
 import { Link, useLocation } from "react-router-dom";
