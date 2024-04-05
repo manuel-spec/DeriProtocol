@@ -42,7 +42,7 @@ const BottomNavigationBar = () => {
             >
               <img
                 src={location.pathname == "/" ? active_home : home}
-                alt=""
+                alt=" "
                 width={25}
                 className="ml-1"
               />

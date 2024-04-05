@@ -8,7 +8,6 @@ import Trade from "./components/Trading/Trading.jsx";
 import Perpetual from "./components/Perpetual/Perpetual.jsx";
 import Assets from "./components/Assets/Assets.jsx";
 import SignIn from "./components/Auth/SignIn.jsx";
-import { useCookies } from "react-cookie";
 import Cookies from "universal-cookie";
 import { useNavigate } from "react-router-dom";
 import SignUP from "./components/Auth/SignUp.jsx";

@@ -11,6 +11,8 @@ import PersonPinIcon from "@mui/icons-material/PersonPin";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import Basic from "./Identity/Basic";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import Cookies from "universal-cookie";
+import { Link, useNavigate } from "react-router-dom";
 
 const style = {
   position: "absolute",
@@ -28,8 +30,16 @@ const style = {
 
 export const Home = () => {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+  const cookies = new Cookies();
+  const token = cookies.get("jwt");
+
   const toggleDrawer = (open) => {
     setOpen(open);
+  };
+  const handleLogout = () => {
+    cookies.remove("jwt", { path: "/" });
+    navigate("/");
   };
 
   const [openModal, setOpenModal] = useState(false);
@@ -98,6 +108,22 @@ export const Home = () => {
               <div className="border-b border-[#ddd] text-[#6D7177]">
                 <button className="m-4">Security Center</button>
               </div>
+              {token && (
+                <div className="border-b border-[#ddd] text-[#6D7177]">
+                  <button className="m-4" onClick={() => handleLogout()}>
+                    Logout
+                  </button>
+                </div>
+              )}
+              {token == null && (
+                <div className="border-b border-[#ddd] text-[#6D7177]">
+                  <button className="m-4">
+                    <Link to="/auth/signin" className="">
+                      Login
+                    </Link>
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>

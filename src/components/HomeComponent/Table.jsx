@@ -141,8 +141,8 @@ const StickyHeadTable = () => {
                   {" "}
                   {/* Hover effect */}
                   <td className="px-4 py-2 flex items-center">
-                    <img src={row.symbol} alt="" width={30} className="mr-2" />
-                    <span className="font-bold text-sm">{row.coin} </span>
+                    <img src={row.symbol} alt="" width={25} className="mr-2" />
+                    <span className="text-xs font-bold">{row.coin} </span>
                     <span className="text-xs">/ USDT</span>
                   </td>
                   <td className="px-4 py-2 text-sm">
