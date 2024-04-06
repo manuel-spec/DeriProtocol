@@ -12,6 +12,26 @@ const Perpetual = () => {
     setOpen(newOpen);
   };
 
+  const [crypto, setCrypto] = useState([
+    "BTC",
+    "ETH",
+    "DOT",
+    "XRP",
+    "LINK",
+    "BCH",
+    "LTC",
+    "ADA",
+    "EOS",
+    "TRX",
+    "XMR",
+    "DASH",
+    "FIL",
+    "YFI",
+    "ZEC",
+    "DOGE",
+  ]);
+  const [active, setActive] = useState(crypto[0]);
+
   const DrawerList = (
     <div className="w-350 h-full bg-[#0F1720] p-10">
       <div className="flex flex-col text-white">

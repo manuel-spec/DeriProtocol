@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TuneIcon from "@mui/icons-material/Tune";
 import CandlestickChartOutlinedIcon from "@mui/icons-material/CandlestickChartOutlined";
 import Drawer from "@mui/material/Drawer";
@@ -8,6 +8,14 @@ import DateTime from "./Datetime";
 const Trade = () => {
   const [open, setOpen] = useState(false);
   const [activeButton, setActiveButton] = useState("long");
+  const [btcData, setBtcData] = useState(null);
+  const [ethData, setEthData] = useState(null);
+  const [xrpData, setXrpData] = useState(null);
+  const ws = new WebSocket("wss://stream.binance.com:9443/ws/btcusdt@trade");
+  ws.onmessage = (event) => {
+    setBtcData(JSON.parse(event.data));
+  };
+  // console.log();
 
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
@@ -31,8 +39,14 @@ const Trade = () => {
     "DOGE",
   ]);
   const [active, setActive] = useState(crypto[0]);
+  let randomDecimal = 0;
+  useEffect(() => {
+    const min = -5;
+    const max = 5;
+    const diff = max - min;
+    randomDecimal = Math.random() * diff + min;
+  }, [btcData]);
 
-  console.log(crypto[0]);
   const DrawerList = (
     <div className="w-350 h-200 bg-[#1E2229] pr-20 pl-10 mb-30">
       <div className="flex flex-col text-white mt-5">
@@ -372,47 +386,96 @@ const Trade = () => {
               <div className="p-3">Amount ({active})</div>
             </div>
             <div className="flex flex-row justify-between items-center text-white text-xs mb-2 text-[#04CF99]">
-              <div className="ml-5">70725.71</div>
-              <div className="mr-5">61</div>
+              <div className="ml-5 text-[#04CF99] bg-[#04CF99]">
+                <p className="">
+                  {btcData ? (parseFloat(btcData.p) + 0.02).toFixed(2) : "--"}
+                </p>
+              </div>
+              <div className="mr-5">
+                {btcData ? (parseFloat(btcData.p) / 600).toFixed(2) : "--"}
+              </div>
             </div>
             <div className="flex flex-row justify-between items-center text-white text-xs mb-2 text-[#04CF99]">
-              <div className="ml-5">70725.71</div>
-              <div className="mr-5">61</div>
+              <div className="ml-5 text-[#04CF99]">
+                {btcData ? (parseFloat(btcData.p) - 0.02).toFixed(2) : "--"}
+              </div>
+              <p className="mr-5">
+                {btcData ? (parseFloat(btcData.p) / 630).toFixed(2) : "--"}
+              </p>
             </div>
             <div className="flex flex-row justify-between items-center text-white text-xs mb-2 text-[#04CF99]">
-              <div className="ml-5">70725.71</div>
-              <div className="mr-5">61</div>
+              <div className="ml-5 text-[#04CF99]">
+                {btcData ? (parseFloat(btcData.p) + 0.04).toFixed(2) : "--"}
+              </div>
+              <p className="mr-5">
+                {btcData ? (parseFloat(btcData.p) / 430).toFixed(2) : "--"}
+              </p>
             </div>
             <div className="flex flex-row justify-between items-center text-white text-xs mb-2 text-[#04CF99]">
-              <div className="ml-5">70725.71</div>
-              <div className="mr-5">61</div>
+              <div className="ml-5 text-[#04CF99]">
+                {btcData ? (parseFloat(btcData.p) + 0.02).toFixed(2) : "--"}
+              </div>
+              <p className="mr-5">
+                {" "}
+                <p className="mr">
+                  {btcData ? (parseFloat(btcData.p) / 900).toFixed(2) : "--"}
+                </p>
+              </p>
             </div>
             <div className="flex flex-row justify-between items-center text-white text-xs mb-2 text-[#04CF99]">
-              <div className="ml-5">70725.71</div>
-              <div className="mr-5">61</div>
+              <div className="ml-5 text-[#04CF99]">
+                {btcData ? (parseFloat(btcData.p) + 0.2).toFixed(2) : "--"}
+              </div>
+              <p className="mr-5">
+                {btcData ? (parseFloat(btcData.p) / 600).toFixed(2) : "--"}
+              </p>
             </div>
-            <div className="text-[#04CF99] ml-5">70710.75</div>
-            <div className="text-[#04CF99] ml-5 text-xs">≈ 70710.75</div>
+            <div className="ml-5 text-[#04CF99]">
+              <p> {btcData ? parseFloat(btcData.p).toFixed(2) : "--"}</p>
+            </div>
 
-            <div className="flex flex-row justify-between items-center text-white text-xs mb-2 mt-3 text-[#F36464]">
-              <div className="ml-5">70725.71</div>
-              <div className="mr-5">61</div>
+            <div className="flex flex-row justify-between items-center text-white text-xs mb-2 text-[#F36464]">
+              <div className="ml-5 text-[#F36464]">
+                <p>
+                  {" "}
+                  {btcData ? (parseFloat(btcData.p) - 0.04).toFixed(2) : "--"}
+                </p>
+              </div>
+              <div className="mr-5">
+                {btcData ? (parseFloat(btcData.p) / 374).toFixed(2) : "--"}
+              </div>
             </div>
             <div className="flex flex-row justify-between items-center text-white text-xs mb-2 text-[#F36464]">
-              <div className="ml-5">70725.71</div>
-              <div className="mr-5">61</div>
+              <div className="ml-5 text-[#F36464]">
+                {btcData ? (parseFloat(btcData.p) - 0.02).toFixed(2) : "--"}
+              </div>
+              <div className="mr-5">
+                {btcData ? (parseFloat(btcData.p) / 230).toFixed(2) : "--"}
+              </div>
             </div>
             <div className="flex flex-row justify-between items-center text-white text-xs mb-2 text-[#F36464]">
-              <div className="ml-5">70725.71</div>
-              <div className="mr-5">61</div>
+              <div className="ml-5 text-[#F36464]">
+                {btcData ? (parseFloat(btcData.p) - 0.01).toFixed(2) : "--"}
+              </div>
+              <div className="mr-5">
+                {btcData ? (parseFloat(btcData.p) / 394).toFixed(2) : "--"}
+              </div>
             </div>
             <div className="flex flex-row justify-between items-center text-white text-xs mb-2 text-[#F36464]">
-              <div className="ml-5">70725.71</div>
-              <div className="mr-5">61</div>
+              <div className="ml-5 text-[#F36464]">
+                {btcData ? (parseFloat(btcData.p) - 0.12).toFixed(2) : "--"}
+              </div>
+              <div className="mr-5">
+                {btcData ? (parseFloat(btcData.p) / 983).toFixed(2) : "--"}
+              </div>
             </div>
             <div className="flex flex-row justify-between items-center text-white text-xs mb-2 text-[#F36464]">
-              <div className="ml-5">70725.71</div>
-              <div className="mr-5">61</div>
+              <div className="ml-5 text-[#F36464]">
+                {btcData ? (parseFloat(btcData.p) - 20).toFixed(2) : "--"}
+              </div>
+              <div className="mr-5">
+                {btcData ? (parseFloat(btcData.p) / 944).toFixed(2) : "--"}
+              </div>
             </div>
           </div>
         </div>
