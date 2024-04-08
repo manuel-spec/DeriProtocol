@@ -11,10 +11,13 @@ const Trade = () => {
   const [btcData, setBtcData] = useState(null);
   const [ethData, setEthData] = useState(null);
   const [xrpData, setXrpData] = useState(null);
-  const ws = new WebSocket("wss://stream.binance.com:9443/ws/btcusdt@trade");
-  ws.onmessage = (event) => {
-    setBtcData(JSON.parse(event.data));
-  };
+  useEffect(() => {
+    const ws = new WebSocket("wss://stream.binance.com:9443/ws/btcusdt@trade");
+    ws.onmessage = (event) => {
+      setBtcData(JSON.parse(event.data));
+    };
+  }, []);
+
   // console.log();
 
   const toggleDrawer = (newOpen) => () => {
