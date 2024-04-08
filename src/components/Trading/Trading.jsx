@@ -23,6 +23,14 @@ const Trade = () => {
   useEffect(() => {
     console.log(tradePercent);
   }, [tradePercent]);
+  var [date, setDate] = useState(new Date());
+
+  useEffect(() => {
+    var timer = setInterval(() => setDate(new Date()), 1000);
+    return function cleanup() {
+      clearInterval(timer);
+    };
+  });
 
   useEffect(() => {
     const apiCall = async () => {
@@ -36,26 +44,23 @@ const Trade = () => {
     apiCall();
   }, []);
 
-  const POSTApi = async (e) => {
-    e.preventDefault();
-    const apiCall = async () => {
-      const cookies = new Cookies();
-      const decoded = jwtDecode(cookies.get("jwt"));
-      const form = {
-        user: decoded["user_id"],
-        token_name: active,
-        trade_amount: tradeAmount,
-        tradeTime: <DateTime />,
-        trade_percent: tradePercent,
-        trade_action: activeButton,
-      };
-
-      const responce = await Axios.post(
-        `http://127.0.0.1:8000/api/order/create`,
-        form
-      ).then((res) => setUser(res.data));
+  const POSTApi = async () => {
+    const cookies = new Cookies();
+    const decoded = jwtDecode(cookies.get("jwt"));
+    console.log(decoded);
+    const form = {
+      user: decoded["user_id"],
+      token_name: active,
+      trade_amount: tradeAmount,
+      trade_time: "12",
+      trade_percent: tradePercent,
+      trade_action: activeButton,
     };
-    apiCall();
+
+    const responce = await Axios.post(
+      `http://127.0.0.1:8000/api/order/create/`,
+      form
+    ).then((res) => console.log(res.data));
   };
 
   useEffect(() => {
@@ -356,7 +361,7 @@ const Trade = () => {
               </div>
               <div className="text-[#dddddd] text-xs flex justify-between mt-1">
                 <p>Available amount</p>
-                <p>{user["USDT_Balance"]}</p>
+                <p>{user["BTC_Balance"]}</p>
               </div>
               <div className="flex justify-left text-xs text-[#dddddd] mt-1">
                 <p>Transaction Period</p>
@@ -372,25 +377,25 @@ const Trade = () => {
                     console.log(tradePercent);
                   }}
                 >
-                  <option value="30" className="text-xs">
+                  <option value="30 - 20" className="text-xs">
                     30s - 20%
                   </option>
-                  <option value="60" className="text-xs">
+                  <option value="60 - 30" className="text-xs">
                     60s - 30%
                   </option>
-                  <option value="120" className="text-xs">
+                  <option value="120 - 50" className="text-xs">
                     120s - 50%
                   </option>
-                  <option value="24" className="text-xs">
+                  <option value="24 - 60" className="text-xs">
                     24h - 60%
                   </option>
-                  <option value="72" className="text-xs">
+                  <option value="72 - 80" className="text-xs">
                     72h - 80%
                   </option>
-                  <option value="7" className="text-xs">
+                  <option value="7 - 90" className="text-xs">
                     7d - 90%
                   </option>
-                  <option value="15" className="text-xs">
+                  <option value="15 - 100" className="text-xs">
                     15d - 100%
                   </option>
                 </select>
