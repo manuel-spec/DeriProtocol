@@ -4,9 +4,11 @@ import Axios from "axios";
 import Cookies from "universal-cookie";
 import { jwtDecode } from "jwt-decode";
 import AccessAlarmIcon from "@mui/icons-material/AccessAlarm";
+import CountDown from "./../Countdown";
 
 const Orders = () => {
   const [orders, setOrders] = useState();
+  const [ordersDone, setDoneOrders] = useState();
   useEffect(() => {
     const apiCall = async () => {
       const cookies = new Cookies();
@@ -20,6 +22,15 @@ const Orders = () => {
         }
       ).then((res) => {
         setOrders(res.data);
+        console.log(orders);
+      });
+      const responce_done = await Axios.post(
+        "http://127.0.0.1:8000/api/order/listed/",
+        {
+          pk: decoded["user_id"],
+        }
+      ).then((res) => {
+        setDoneOrders(res.data);
         console.log(orders);
       });
     };
@@ -94,7 +105,42 @@ const Orders = () => {
                 <div className="text-sm">Trade time</div>
                 <div>
                   <AccessAlarmIcon className="mr-3" />
-                  {item.trade_percent}
+                  {parseInt(item.trade_percent.substring(0, 2)) === 20 && (
+                    <CountDown
+                      Seconds={parseInt(item.trade_percent.substring(0, 2))}
+                      id={index}
+                    />
+                  )}
+                  {parseInt(item.trade_percent.substring(0, 2)) === 30 && (
+                    <CountDown
+                      Seconds={parseInt(item.trade_percent.substring(0, 2))}
+                      id={index}
+                    />
+                  )}
+                  {parseInt(item.trade_percent.substring(0, 2)) === 60 && (
+                    <CountDown
+                      Seconds={parseInt(item.trade_percent.substring(0, 2))}
+                      id={index}
+                    />
+                  )}
+                  {parseInt(item.trade_percent.substring(0, 2)) === 120 && (
+                    <CountDown
+                      Seconds={parseInt(item.trade_percent.substring(0, 2))}
+                      id={index}
+                    />
+                  )}
+                  {parseInt(item.trade_percent.substring(0, 2)) === 7 && (
+                    <CountDown Seconds={604800} id={index} />
+                  )}
+                  {parseInt(item.trade_percent.substring(0, 2)) === 24 && (
+                    <CountDown Seconds={2073600} id={index} />
+                  )}
+                  {parseInt(item.trade_percent.substring(0, 2)) === 72 && (
+                    <CountDown Seconds={6220800} id={index} />
+                  )}
+                  {parseInt(item.trade_percent.substring(0, 2)) === 15 && (
+                    <CountDown Seconds={31104000} id={index} />
+                  )}
                 </div>
               </div>
             </div>
