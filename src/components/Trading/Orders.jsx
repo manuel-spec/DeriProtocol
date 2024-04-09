@@ -7,7 +7,8 @@ import AccessAlarmIcon from "@mui/icons-material/AccessAlarm";
 import CountDown from "./../Countdown";
 
 const Orders = () => {
-  const [orders, setOrders] = useState();
+  const [orders, setOrders] = useState([]);
+  // console.log(orders);
   const [ordersDone, setDoneOrders] = useState();
   useEffect(() => {
     const apiCall = async () => {
@@ -71,7 +72,7 @@ const Orders = () => {
           ></span>
         </div>
       </div>
-      {orders == null && (
+      {orders.length == 0 && (
         <div className="flex flex-col justify-center items-center text-white border-t p-20">
           <div>
             <img src={nodata} alt="" width={180} className="mb-3" />
@@ -81,7 +82,7 @@ const Orders = () => {
           </div>
         </div>
       )}
-      {orders && activeButton == "orders" && (
+      {orders != null && activeButton == "orders" && (
         <div className="mb-20">
           {orders.map((item, index) => (
             <div
@@ -109,37 +110,65 @@ const Orders = () => {
                     <CountDown
                       Seconds={parseInt(item.trade_percent.substring(0, 2))}
                       id={index}
+                      item={item.id}
+                      order={item}
                     />
                   )}
                   {parseInt(item.trade_percent.substring(0, 2)) === 30 && (
                     <CountDown
                       Seconds={parseInt(item.trade_percent.substring(0, 2))}
                       id={index}
+                      item={item.id}
+                      order={item}
                     />
                   )}
                   {parseInt(item.trade_percent.substring(0, 2)) === 60 && (
                     <CountDown
                       Seconds={parseInt(item.trade_percent.substring(0, 2))}
                       id={index}
+                      item={item.id}
+                      order={item}
                     />
                   )}
-                  {parseInt(item.trade_percent.substring(0, 2)) === 120 && (
+                  {parseInt(item.trade_percent.substring(0, 3)) === 120 && (
                     <CountDown
                       Seconds={parseInt(item.trade_percent.substring(0, 2))}
                       id={index}
+                      item={item.id}
+                      order={item}
                     />
                   )}
                   {parseInt(item.trade_percent.substring(0, 2)) === 7 && (
-                    <CountDown Seconds={604800} id={index} />
+                    <CountDown
+                      Seconds={604800}
+                      id={index}
+                      item={item.id}
+                      order={item}
+                    />
                   )}
                   {parseInt(item.trade_percent.substring(0, 2)) === 24 && (
-                    <CountDown Seconds={2073600} id={index} />
+                    <CountDown
+                      Seconds={2073600}
+                      id={index}
+                      item={item.id}
+                      order={item}
+                    />
                   )}
                   {parseInt(item.trade_percent.substring(0, 2)) === 72 && (
-                    <CountDown Seconds={6220800} id={index} />
+                    <CountDown
+                      Seconds={6220800}
+                      id={index}
+                      item={item.id}
+                      order={item}
+                    />
                   )}
                   {parseInt(item.trade_percent.substring(0, 2)) === 15 && (
-                    <CountDown Seconds={31104000} id={index} />
+                    <CountDown
+                      Seconds={31104000}
+                      id={index}
+                      item={item.id}
+                      order={item}
+                    />
                   )}
                 </div>
               </div>

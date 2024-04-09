@@ -20,6 +20,7 @@ const Trade = () => {
   const [btcData, setBtcData] = useState(null);
   const [ethData, setEthData] = useState(null);
   const [xrpData, setXrpData] = useState(null);
+
   useEffect(() => {
     console.log(tradePercent);
   }, [tradePercent]);
@@ -502,7 +503,7 @@ const Trade = () => {
               <div className="p-3">Amount ({active})</div>
             </div>
             <div className="flex flex-row justify-between items-center text-white text-xs mb-2 text-[#04CF99]">
-              <div className="ml-5 text-[#04CF99] bg-[#04CF99]">
+              <div className="ml-5 text-[#04CF99]">
                 <p className="">
                   {btcData ? (parseFloat(btcData.p) + 0.02).toFixed(2) : "--"}
                 </p>

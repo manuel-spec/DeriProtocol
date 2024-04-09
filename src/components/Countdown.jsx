@@ -2,6 +2,7 @@ import Axios from "axios";
 import React, { useState, useEffect } from "react";
 import Countdown from "react-countdown";
 import { Riple } from "react-loading-indicators";
+import { useNavigate } from "react-router-dom";
 
 const getLocalStorageValue = (key) => localStorage.getItem(key);
 const setLocalStorageValue = (key, value) => localStorage.setItem(key, value);
@@ -26,11 +27,34 @@ const renderer = ({ hours, minutes, seconds, completed }) => {
     );
   }
 };
-const completed = (Item) => {};
+const onComplete = () => {};
+const CountDown = ({ Seconds, id, item, order }) => {
+  // console.log(order);
+  const navigate = useNavigate();
 
-const CountDown = ({ Seconds, id }) => {
-  const [timeDone, setTimeDone] = useState(false);
-
+  const onDone = async () => {
+    // await Axios.post("http://127.0.0.1:8000/api/order/created/", {
+    //   user: order.user,
+    //   token_name: order.token_name,
+    //   trade_amount: order.trade_amount,
+    //   trade_time: order.trade_time,
+    //   trade_percent: order.trade_percent,
+    //   trade_profit: 100,
+    // })
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
+    // await Axios.delete("http://1  27.0.0.1:8000/api/order/delete/", {
+    //   data: {
+    //     pk: item,
+    //   },
+    // }).then((res) => {
+    //   navigate("/");
+    // });
+  };
   const [data, setData] = useState({
     date: Date.now(),
     delay: Seconds * 1000,
@@ -76,6 +100,7 @@ const CountDown = ({ Seconds, id }) => {
 
             if (getLocalStorageValue(`end_date_${id}`) != null)
               removeLocalStorageValue(`end_date_${id}`);
+            onDone();
           }}
         />
       </div>

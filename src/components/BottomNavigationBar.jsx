@@ -33,6 +33,7 @@ const BottomNavigationBar = () => {
         onChange={(event, newValue) => {
           setValue(newValue);
         }}
+        className="mt-2"
       >
         <div className="flex flex-row justify-between items-center">
           <div className="p-3">
