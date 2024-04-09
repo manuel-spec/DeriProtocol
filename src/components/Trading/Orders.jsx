@@ -104,8 +104,8 @@ const Orders = () => {
               </div>
               <div className="flex flex-col">
                 <div className="text-sm">Trade time</div>
-                <div>
-                  <AccessAlarmIcon className="mr-3" />
+                <div className=" flex flex-row ">
+                  <AccessAlarmIcon className="mr-2" />
                   {parseInt(item.trade_percent.substring(0, 2)) === 20 && (
                     <CountDown
                       Seconds={parseInt(item.trade_percent.substring(0, 2))}

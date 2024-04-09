@@ -10,7 +10,7 @@ const removeLocalStorageValue = (key) => localStorage.removeItem(key);
 
 const Completionist = () => (
   <span>
-    <Riple color="#0411b0" size="small" text="" textColor="" />
+    <Riple color="#ffffff" size="small" text="" textColor="" />
   </span>
 );
 
