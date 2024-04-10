@@ -6,10 +6,10 @@ import { jwtDecode } from "jwt-decode";
 import AccessAlarmIcon from "@mui/icons-material/AccessAlarm";
 import CountDown from "./../Countdown";
 
-const Orders = () => {
+const Orders = ({ active, user }) => {
   const [orders, setOrders] = useState([]);
   // console.log(orders);
-  const [ordersDone, setDoneOrders] = useState();
+  const [ordersDone, setDoneOrders] = useState(null);
   useEffect(() => {
     const apiCall = async () => {
       const cookies = new Cookies();
@@ -23,7 +23,7 @@ const Orders = () => {
         }
       ).then((res) => {
         setOrders(res.data);
-        console.log(orders);
+        // console.log(orders);
       });
       const responce_done = await Axios.post(
         "http://127.0.0.1:8000/api/order/listed/",
@@ -31,9 +31,8 @@ const Orders = () => {
           pk: decoded["user_id"],
         }
       ).then((res) => {
-        console.log(res);
+        // console.log(res);
         setDoneOrders(res.data);
-        console.log(orders);
       });
     };
     apiCall();
@@ -73,7 +72,17 @@ const Orders = () => {
           ></span>
         </div>
       </div>
-      {orders.length == 0 && (
+      {activeButton == "orders" && orders.length == 0 && (
+        <div className="flex flex-col justify-center items-center text-white border-t p-20">
+          <div>
+            <img src={nodata} alt="" width={180} className="mb-3" />
+          </div>
+          <div>
+            <p className="text-white mb-4">No data</p>
+          </div>
+        </div>
+      )}
+      {activeButton == "records" && ordersDone.length == 0 && (
         <div className="flex flex-col justify-center items-center text-white border-t p-20">
           <div>
             <img src={nodata} alt="" width={180} className="mb-3" />
@@ -113,6 +122,8 @@ const Orders = () => {
                       id={index}
                       item={item.id}
                       order={item}
+                      active={active}
+                      user={user}
                     />
                   )}
                   {parseInt(item.trade_percent.substring(0, 2)) === 30 && (
@@ -121,6 +132,8 @@ const Orders = () => {
                       id={index}
                       item={item.id}
                       order={item}
+                      active={active}
+                      user={user}
                     />
                   )}
                   {parseInt(item.trade_percent.substring(0, 2)) === 60 && (
@@ -129,6 +142,8 @@ const Orders = () => {
                       id={index}
                       item={item.id}
                       order={item}
+                      active={active}
+                      user={user}
                     />
                   )}
                   {parseInt(item.trade_percent.substring(0, 3)) === 120 && (
@@ -137,6 +152,8 @@ const Orders = () => {
                       id={index}
                       item={item.id}
                       order={item}
+                      active={active}
+                      user={user}
                     />
                   )}
                   {parseInt(item.trade_percent.substring(0, 2)) === 7 && (
@@ -145,6 +162,8 @@ const Orders = () => {
                       id={index}
                       item={item.id}
                       order={item}
+                      active={active}
+                      user={user}
                     />
                   )}
                   {parseInt(item.trade_percent.substring(0, 2)) === 24 && (
@@ -153,6 +172,8 @@ const Orders = () => {
                       id={index}
                       item={item.id}
                       order={item}
+                      active={active}
+                      user={user}
                     />
                   )}
                   {parseInt(item.trade_percent.substring(0, 2)) === 72 && (
@@ -161,6 +182,7 @@ const Orders = () => {
                       id={index}
                       item={item.id}
                       order={item}
+                      user={user}
                     />
                   )}
                   {parseInt(item.trade_percent.substring(0, 2)) === 15 && (
@@ -169,6 +191,8 @@ const Orders = () => {
                       id={index}
                       item={item.id}
                       order={item}
+                      active={active}
+                      user={user}
                     />
                   )}
                 </div>

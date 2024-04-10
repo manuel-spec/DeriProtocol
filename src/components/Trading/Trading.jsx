@@ -362,7 +362,7 @@ const Trade = () => {
               </div>
               <div className="text-[#dddddd] text-xs flex justify-between mt-1">
                 <p>Available amount</p>
-                <p>{user["BTC_Balance"]}</p>
+                <p>{user[`${active}_Balance`]}</p>
               </div>
               <div className="flex justify-left text-xs text-[#dddddd] mt-1">
                 <p>Transaction Period</p>
@@ -597,7 +597,7 @@ const Trade = () => {
           </div>
         </div>
       </div>
-      <Orders />
+      <Orders active={active} user={user} />
     </div>
   );
 };
