@@ -21,9 +21,6 @@ const Trade = () => {
   const [ethData, setEthData] = useState(null);
   const [xrpData, setXrpData] = useState(null);
 
-  useEffect(() => {
-    console.log(tradePercent);
-  }, [tradePercent]);
   var [date, setDate] = useState(new Date());
 
   useEffect(() => {
@@ -63,19 +60,6 @@ const Trade = () => {
       form
     ).then((res) => console.log(res.data));
   };
-
-  useEffect(() => {
-    const ws = new WebSocket("wss://stream.binance.com:9443/ws/btcusdt@trade");
-    ws.onmessage = (event) => {
-      setBtcData(JSON.parse(event.data));
-    };
-  }, []);
-
-  // console.log();
-
-  const toggleDrawer = (newOpen) => () => {
-    setOpen(newOpen);
-  };
   const [crypto, setCrypto] = useState([
     "BTC",
     "ETH",
@@ -95,6 +79,28 @@ const Trade = () => {
     "DOGE",
   ]);
   const [active, setActive] = useState(crypto[0]);
+
+  useEffect(() => {
+    const ws = new WebSocket(
+      `wss://stream.binance.com:9443/ws/${active.toLocaleLowerCase()}usdt@trade`
+    );
+    ws.onmessage = (event) => {
+      setBtcData(JSON.parse(event.data));
+      // console.log(event.data);
+    };
+
+    // console.log(active.toLocaleLowerCase());
+    return () => {
+      ws.close();
+    };
+  }, [active]);
+
+  // console.log();
+
+  const toggleDrawer = (newOpen) => () => {
+    setOpen(newOpen);
+  };
+
   let randomDecimal = 0;
   useEffect(() => {
     const min = -5;
@@ -110,9 +116,8 @@ const Trade = () => {
         <span className="border rounded border-[#FEA453] w-10"></span>
 
         <div className="flex flex-col mt-5">
-          <div data-v-6203fbe4="" className="coin-item active p-2 font-bold ">
+          <div className="coin-item active p-2 font-bold ">
             <button
-              data-v-6203fbe4=""
               onClick={() => {
                 setActive(crypto[0]);
                 setOpen(false);
@@ -121,9 +126,8 @@ const Trade = () => {
               BTC / USDT
             </button>
           </div>
-          <div data-v-6203fbe4="" className="coin-item p-2 font-bold ">
+          <div className="coin-item p-2 font-bold ">
             <button
-              data-v-6203fbe4=""
               onClick={() => {
                 setActive(crypto[1]);
                 setOpen(false);
@@ -132,9 +136,8 @@ const Trade = () => {
               ETH / USDT
             </button>
           </div>
-          <div data-v-6203fbe4="" className="coin-item p-2 font-bold ">
+          <div className="coin-item p-2 font-bold ">
             <button
-              data-v-6203fbe4=""
               onClick={() => {
                 setActive(crypto[2]);
                 setOpen(false);
@@ -143,9 +146,8 @@ const Trade = () => {
               DOT / USDT
             </button>
           </div>
-          <div data-v-6203fbe4="" className="coin-item p-2 font-bold ">
+          <div className="coin-item p-2 font-bold ">
             <button
-              data-v-6203fbe4=""
               onClick={() => {
                 setActive(crypto[3]);
                 setOpen(false);
@@ -154,132 +156,120 @@ const Trade = () => {
               XRP / USDT
             </button>
           </div>
-          <div data-v-6203fbe4="" className="coin-item p-2 font-bold ">
+          <div className="coin-item p-2 font-bold ">
             <button
-              data-v-6203fbe4=""
               onClick={() => {
-                setActive(crypto[3]);
+                setActive(crypto[4]);
                 setOpen(false);
               }}
             >
               LINK / USDT
             </button>
           </div>
-          <div data-v-6203fbe4="" className="coin-item p-2 font-bold ">
+          <div className="coin-item p-2 font-bold ">
             <button
-              data-v-6203fbe4=""
               onClick={() => {
-                setActive(crypto[4]);
+                setActive(crypto[5]);
                 setOpen(false);
               }}
             >
               BCH / USDT
             </button>
           </div>
-          <div data-v-6203fbe4="" className="coin-item p-2 font-bold ">
+          <div className="coin-item p-2 font-bold ">
             <button
-              data-v-6203fbe4=""
               onClick={() => {
-                setActive(crypto[5]);
+                setActive(crypto[6]);
                 setOpen(false);
               }}
             >
               LTC / USDT
             </button>
           </div>
-          <div data-v-6203fbe4="" className="coin-item p-2 font-bold ">
+          <div className="coin-item p-2 font-bold ">
             <button
-              data-v-6203fbe4=""
               onClick={() => {
-                setActive(crypto[6]);
+                setActive(crypto[7]);
                 setOpen(false);
               }}
             >
               ADA / USDT
             </button>
           </div>
-          <div data-v-6203fbe4="" className="coin-item p-2 font-bold ">
+          <div className="coin-item p-2 font-bold ">
             <span
-              data-v-6203fbe4=""
               onClick={() => {
-                setActive(crypto[7]);
+                setActive(crypto[8]);
                 setOpen(false);
               }}
             >
               EOS / USDT
             </span>
           </div>
-          <div data-v-6203fbe4="" className="coin-item p-2 font-bold ">
+          <div className="coin-item p-2 font-bold ">
             <button
-              data-v-6203fbe4=""
               onClick={() => {
-                setActive(crypto[8]);
+                setActive(crypto[9]);
                 setOpen(false);
               }}
             >
               TRX / USDT
             </button>
           </div>
-          <div data-v-6203fbe4="" className="coin-item p-2 font-bold ">
+          <div className="coin-item p-2 font-bold ">
             <button
-              data-v-6203fbe4=""
               onClick={() => {
-                setActive(crypto[9]);
+                setActive(crypto[10]);
                 setOpen(false);
               }}
             >
               XMR / USDT
             </button>
           </div>
-          <div data-v-6203fbe4="" className="coin-item p-2 font-bold ">
+          <div className="coin-item p-2 font-bold ">
             <button
-              data-v-6203fbe4=""
               onClick={() => {
-                setActive(crypto[10]);
+                setActive(crypto[11]);
                 setOpen(false);
               }}
             >
               DASH / USDT
             </button>
           </div>
-          <div data-v-6203fbe4="" className="coin-item p-2 font-bold ">
+          <div className="coin-item p-2 font-bold ">
             <button
-              data-v-6203fbe4=""
               onClick={() => {
-                setActive(crypto[11]);
+                setActive(crypto[12]);
                 setOpen(false);
               }}
             >
               FIL / USDT
             </button>
           </div>
-          <div data-v-6203fbe4="" className="coin-item p-2 font-bold ">
+          <div className="coin-item p-2 font-bold ">
             <button
-              data-v-6203fbe4=""
               onClick={() => {
-                setActive(crypto[12]);
+                setActive(crypto[13]);
                 setOpen(false);
               }}
             >
               YFI / USDT
             </button>
           </div>
-          <div data-v-6203fbe4="" className="coin-item p-2 font-bold ">
+          <div className="coin-item p-2 font-bold ">
             <button
-              data-v-6203fbe4=""
               onClick={() => {
-                setActive(crypto[13]);
+                setActive(crypto[14]);
                 setOpen(false);
               }}
             >
               ZEC / USDT
             </button>
           </div>
-          <div data-v-6203fbe4="" className="coin-item p-2 font-bold ">
+          <div className="coin-item p-2 font-bold ">
             <button
-              data-v-6203fbe4=""
               onClick={() => {
-                setActive(crypto[14]);
+                setActive(crypto[15]);
                 setOpen(false);
               }}
             >
@@ -509,7 +499,7 @@ const Trade = () => {
                 </p>
               </div>
               <div className="mr-5">
-                {btcData ? (parseFloat(btcData.p) / 600).toFixed(2) : "--"}
+                {btcData ? (parseFloat(btcData.q) + 6.3).toFixed(2) : "--"}
               </div>
             </div>
             <div className="flex flex-row justify-between items-center text-white text-xs mb-2 text-[#04CF99]">
@@ -517,7 +507,7 @@ const Trade = () => {
                 {btcData ? (parseFloat(btcData.p) - 0.02).toFixed(2) : "--"}
               </div>
               <p className="mr-5">
-                {btcData ? (parseFloat(btcData.p) / 630).toFixed(2) : "--"}
+                {btcData ? (parseFloat(btcData.q) + 2.6).toFixed(2) : "--"}
               </p>
             </div>
             <div className="flex flex-row justify-between items-center text-white text-xs mb-2 text-[#04CF99]">
@@ -525,7 +515,7 @@ const Trade = () => {
                 {btcData ? (parseFloat(btcData.p) + 0.04).toFixed(2) : "--"}
               </div>
               <p className="mr-5">
-                {btcData ? (parseFloat(btcData.p) / 430).toFixed(2) : "--"}
+                {btcData ? (parseFloat(btcData.q) + 4.5).toFixed(2) : "--"}
               </p>
             </div>
             <div className="flex flex-row justify-between items-center text-white text-xs mb-2 text-[#04CF99]">
@@ -535,7 +525,7 @@ const Trade = () => {
               <p className="mr-5">
                 {" "}
                 <p className="mr">
-                  {btcData ? (parseFloat(btcData.p) / 900).toFixed(2) : "--"}
+                  {btcData ? (parseFloat(btcData.q) + 6).toFixed(2) : "--"}
                 </p>
               </p>
             </div>
@@ -544,7 +534,7 @@ const Trade = () => {
                 {btcData ? (parseFloat(btcData.p) + 0.2).toFixed(2) : "--"}
               </div>
               <p className="mr-5">
-                {btcData ? (parseFloat(btcData.p) / 600).toFixed(2) : "--"}
+                {btcData ? (parseFloat(btcData.q) + 4).toFixed(2) : "--"}
               </p>
             </div>
             <div className="ml-5 text-[#04CF99]">
@@ -559,7 +549,7 @@ const Trade = () => {
                 </p>
               </div>
               <div className="mr-5">
-                {btcData ? (parseFloat(btcData.p) / 374).toFixed(2) : "--"}
+                {btcData ? (parseFloat(btcData.q) + 2.9).toFixed(2) : "--"}
               </div>
             </div>
             <div className="flex flex-row justify-between items-center text-white text-xs mb-2 text-[#F36464]">
@@ -567,7 +557,7 @@ const Trade = () => {
                 {btcData ? (parseFloat(btcData.p) - 0.02).toFixed(2) : "--"}
               </div>
               <div className="mr-5">
-                {btcData ? (parseFloat(btcData.p) / 230).toFixed(2) : "--"}
+                {btcData ? (parseFloat(btcData.q) + 2.7).toFixed(2) : "--"}
               </div>
             </div>
             <div className="flex flex-row justify-between items-center text-white text-xs mb-2 text-[#F36464]">
@@ -575,7 +565,7 @@ const Trade = () => {
                 {btcData ? (parseFloat(btcData.p) - 0.01).toFixed(2) : "--"}
               </div>
               <div className="mr-5">
-                {btcData ? (parseFloat(btcData.p) / 394).toFixed(2) : "--"}
+                {btcData ? (parseFloat(btcData.q) + 1.9).toFixed(2) : "--"}
               </div>
             </div>
             <div className="flex flex-row justify-between items-center text-white text-xs mb-2 text-[#F36464]">
@@ -583,7 +573,7 @@ const Trade = () => {
                 {btcData ? (parseFloat(btcData.p) - 0.12).toFixed(2) : "--"}
               </div>
               <div className="mr-5">
-                {btcData ? (parseFloat(btcData.p) / 983).toFixed(2) : "--"}
+                {btcData ? (parseFloat(btcData.q) + 2.2).toFixed(2) : "--"}
               </div>
             </div>
             <div className="flex flex-row justify-between items-center text-white text-xs mb-2 text-[#F36464]">
@@ -591,7 +581,7 @@ const Trade = () => {
                 {btcData ? (parseFloat(btcData.p) - 20).toFixed(2) : "--"}
               </div>
               <div className="mr-5">
-                {btcData ? (parseFloat(btcData.p) / 944).toFixed(2) : "--"}
+                {btcData ? (parseFloat(btcData.q) + 1).toFixed(2) : "--"}
               </div>
             </div>
           </div>

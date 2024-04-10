@@ -8,7 +8,6 @@ import CountDown from "./../Countdown";
 
 const Orders = ({ active, user }) => {
   const [orders, setOrders] = useState([]);
-  // console.log(orders);
   const [ordersDone, setDoneOrders] = useState(null);
   useEffect(() => {
     const apiCall = async () => {
@@ -202,7 +201,7 @@ const Orders = ({ active, user }) => {
         </div>
       )}
       {ordersDone != null && activeButton == "records" && (
-        <div className="">
+        <div className="mb-20">
           {ordersDone.map((item, index) => (
             <div
               key={index}

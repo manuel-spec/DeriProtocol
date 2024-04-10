@@ -31,12 +31,17 @@ const renderer = ({ hours, minutes, seconds, completed }) => {
 };
 const onComplete = () => {};
 const CountDown = ({ Seconds, id, item, order, active, user }) => {
-  // console.log(order);
   const navigate = useNavigate();
-  // const [user, setUser] = useState(0);
+  const [currentOrder, setCurrentOrder] = useState();
 
-  // console.log(user);
-
+  useEffect(() => {
+    Axios.post("http://127.0.0.1:8000/api/order/get/", {
+      pk: item,
+    }).then((res) => {
+      console.log(res.data);
+      setCurrentOrder(res.data);
+    });
+  }, []);
   const onDone = async () => {
     const cookies = new Cookies();
 
@@ -61,9 +66,9 @@ const CountDown = ({ Seconds, id, item, order, active, user }) => {
 
     await Axios.put("http://127.0.0.1:8000/api/balance/update/", {
       pk: order.user,
-      token: active,
+      token: currentOrder["token_name"],
       balance:
-        parseFloat(user[`${active}_Balance`]) +
+        parseFloat(user[`${currentOrder["token_name"]}_Balance`]) +
         parseFloat(order["trade_amount"]) *
           (parseFloat(order["trade_percent"].slice(-2)) / 100),
     }).then((res) => {
