@@ -31,6 +31,7 @@ const Orders = () => {
           pk: decoded["user_id"],
         }
       ).then((res) => {
+        console.log(res);
         setDoneOrders(res.data);
         console.log(orders);
       });
@@ -170,6 +171,30 @@ const Orders = () => {
                       order={item}
                     />
                   )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+      {ordersDone != null && activeButton == "records" && (
+        <div className="">
+          {ordersDone.map((item, index) => (
+            <div
+              key={index}
+              className="flex flex-row justify-between align-center text-white p-2 ml-3 text-sm"
+            >
+              <div className="flex flex-col">
+                <div className="flex flex-row">
+                  <p>Token Name:</p>
+                  <p className="text-sm">{item.token_name}</p>
+                </div>
+                <div className="flex flex-row">
+                  <p className="text-sm">Trade amount:</p>
+                  <p className="text-sm ml-2">
+                    {item.trade_amount}
+                    {item.token_name}
+                  </p>
                 </div>
               </div>
             </div>
