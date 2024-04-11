@@ -5,10 +5,13 @@ import Cookies from "universal-cookie";
 import { jwtDecode } from "jwt-decode";
 import AccessAlarmIcon from "@mui/icons-material/AccessAlarm";
 import CountDown from "./../Countdown";
+import { Modal } from "flowbite-react";
+import { useNavigate } from "react-router-dom";
 
 const Orders = ({ active, user }) => {
   const [orders, setOrders] = useState([]);
   const [ordersDone, setDoneOrders] = useState(null);
+  const navigate = useNavigate();
   useEffect(() => {
     const apiCall = async () => {
       const cookies = new Cookies();
@@ -38,6 +41,8 @@ const Orders = ({ active, user }) => {
   }, []);
 
   const [activeButton, setActiveButton] = useState("orders");
+  const [openModal, setModalOpen] = useState(false);
+
   return (
     <div className="flex flex-col text-white bg-[#0F1720] mt-2">
       <div className="text-sm p-3 flex flex-row">
@@ -206,11 +211,18 @@ const Orders = ({ active, user }) => {
             <div
               key={index}
               className="flex flex-row justify-between align-center text-white p-2 ml-3 text-sm"
+              onClick={() => setModalOpen(!open)}
             >
-              <div className="flex flex-col">
+              <div
+                className="flex flex-col"
+                onClick={() =>
+                  navigate("/trade/details", { state: { item: item } })
+                }
+              >
                 <div className="flex flex-row">
                   <p>Token Name:</p>
                   <p className="text-sm">{item.token_name}</p>
+                  <button onClick={() => setModalOpen(true)}>detail</button>
                 </div>
                 <div className="flex flex-row">
                   <p className="text-sm">Trade amount:</p>

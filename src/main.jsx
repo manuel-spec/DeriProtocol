@@ -11,6 +11,8 @@ import SignIn from "./components/Auth/SignIn.jsx";
 import Cookies from "universal-cookie";
 import { useNavigate } from "react-router-dom";
 import SignUP from "./components/Auth/SignUp.jsx";
+import TradeDetail from "./components/Trading/TradeDetail.jsx";
+import Recharge from "./components/Recharge/Recharge.jsx";
 
 const ProtectedRoute = ({ element: Component }) => {
   const cookies = new Cookies();
@@ -47,6 +49,10 @@ const router = createBrowserRouter([
         element: <ProtectedRoute element={Trade} />,
       },
       {
+        path: "/trade/details",
+        element: <ProtectedRoute element={TradeDetail} />,
+      },
+      {
         path: "/perpetual",
         element: <ProtectedRoute element={Perpetual} />,
       },
@@ -57,6 +63,10 @@ const router = createBrowserRouter([
       {
         path: "auth/signin",
         element: <SignIn />,
+      },
+      {
+        path: "recharge/",
+        element: <Recharge />,
       },
       {
         path: "auth/register",

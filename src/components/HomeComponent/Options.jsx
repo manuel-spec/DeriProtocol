@@ -6,7 +6,7 @@ import tradingIcon from "../../assets/icons/trading.png";
 import helpIcon from "../../assets/icons/helpcenter.png";
 import miningIcon from "../../assets/icons/mining.png";
 import perpetualIcon from "../../assets/icons/perpetual.png";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Options = () => {
   const navigate = useNavigate();
@@ -15,10 +15,12 @@ const Options = () => {
       <div className="flex flex-row">
         <div className="p-3 text-white text-xs text-center flex flex-col mr-3 justify-center items-center">
           <div>
-            <img src={depositIcons} alt="" width={25} />
+            <Link to="/recharge">
+              <img src={depositIcons} alt="" width={25} />
+            </Link>
           </div>
           <div>
-            <p>Deposit</p>
+            <Link to="/recharge">Deposit</Link>
           </div>
         </div>
         <div className="p-3 text-white text-xs text-center flex flex-col mr-3 justify-center items-center">
