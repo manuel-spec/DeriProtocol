@@ -1,14 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
+import { useNavigate } from "react-router-dom";
 
 const Recharge = () => {
+  const navigate = useNavigate();
   return (
     <div className="flex flex-col">
       <div className="flex flex-row justify-between text-white">
         <div>
           <Link to="/">
-            <ArrowForwardIosIcon style={{ fontSize: 15 }} className="ml-2" />
+            <ArrowBackIosIcon style={{ fontSize: 15 }} className="ml-2" />
           </Link>
         </div>
         <div className="flex flex-row justify-center items-center">
@@ -20,7 +23,12 @@ const Recharge = () => {
         Please Select the cryptocurrency you want to deposit:
       </div>
       <div className="flex flex-col text-white mt-5">
-        <div className="flex flex-row p-2 border-b border-t border-[#000000] flex justify-between">
+        <div
+          className="flex flex-row p-2 border-b border-t border-[#000000] flex justify-between"
+          onClick={() =>
+            navigate("/recharge/details/", { state: { crypto: "USDT" } })
+          }
+        >
           <div className="flex flex-row">
             <img
               src="https://s2.coinmarketcap.com/static/img/coins/32x32/825.png"
@@ -34,7 +42,12 @@ const Recharge = () => {
             <ArrowForwardIosIcon style={{ fontSize: 15 }} />
           </div>
         </div>
-        <div className="p-2 border-b border-[#000000] flex flex-row justify-between">
+        <div
+          className="p-2 border-b border-[#000000] flex flex-row justify-between"
+          onClick={() =>
+            navigate("/recharge/details/", { state: { crypto: "ETH" } })
+          }
+        >
           <div className="flex flex-row">
             <img
               src="https://s2.coinmarketcap.com/static/img/coins/32x32/1027.png"
@@ -49,7 +62,12 @@ const Recharge = () => {
             <ArrowForwardIosIcon style={{ fontSize: 15 }} />
           </div>
         </div>
-        <div className="p-2 border-b border-[#000000] flex flex-row justify-between">
+        <div
+          className="p-2 border-b border-[#000000] flex flex-row justify-between"
+          onClick={() =>
+            navigate("/recharge/details/", { state: { crypto: "BTC" } })
+          }
+        >
           <div className="flex flex-row">
             <img
               src="https://s2.coinmarketcap.com/static/img/coins/32x32/1.png"
@@ -63,7 +81,12 @@ const Recharge = () => {
             <ArrowForwardIosIcon style={{ fontSize: 15 }} />
           </div>
         </div>
-        <div className="p-2 border-b border-[#000000] flex flex-row justify-between">
+        <div
+          className="p-2 border-b border-[#000000] flex flex-row justify-between"
+          onClick={() =>
+            navigate("/recharge/details/", { state: { crypto: "USDC" } })
+          }
+        >
           <div className="flex flex-row">
             <img
               src="https://s2.coinmarketcap.com/static/img/coins/32x32/3408.png"
@@ -77,7 +100,12 @@ const Recharge = () => {
             <ArrowForwardIosIcon style={{ fontSize: 15 }} />
           </div>
         </div>
-        <div className="p-2 border-b  border-[#000000] flex flex-row justify-between">
+        <div
+          className="p-2 border-b  border-[#000000] flex flex-row justify-between"
+          onClick={() =>
+            navigate("/recharge/details/", { state: { crypto: "DAI" } })
+          }
+        >
           <div className="flex flex-row">
             <img
               src="https://s2.coinmarketcap.com/static/img/coins/32x32/4943.png"

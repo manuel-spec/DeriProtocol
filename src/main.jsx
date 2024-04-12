@@ -14,6 +14,7 @@ import SignUP from "./components/Auth/SignUp.jsx";
 import TradeDetail from "./components/Trading/TradeDetail.jsx";
 import Recharge from "./components/Recharge/Recharge.jsx";
 import Withdrawal from "./components/withdrawal/Withdrawal.jsx";
+import RechargeDetail from "./components/Recharge/RechargeDetail.jsx";
 
 const ProtectedRoute = ({ element: Component }) => {
   const cookies = new Cookies();
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
       {
         path: "recharge/",
         element: <Recharge />,
+      },
+      {
+        path: "/recharge/details/",
+        element: <RechargeDetail />,
       },
       {
         path: "withdrawal/",
