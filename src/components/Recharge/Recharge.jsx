@@ -124,62 +124,78 @@ const Recharge = () => {
         <div className="text-white font-bold mt-3 border-b-2 border-[#000000] p-2">
           <p className="ml-2">offsite links</p>
         </div>
+        <a href="http://www.gemini.com">
+          <div className="flex flex-row p-2 border-b border-[#000000] flex justify-between">
+            <div className="flex flex-row">
+              <img
+                src="https://www.gemini.com/favicon.ico"
+                alt=""
+                width={25}
+                className="mr-2 ml-2"
+              />
+              <p>Gemini</p>
+            </div>
+            <a href="http://www.gemini.com">
+              <div>
+                <ArrowForwardIosIcon style={{ fontSize: 15 }} />
+              </div>
+            </a>
+          </div>
+        </a>
         <div className="flex flex-row p-2 border-b border-[#000000] flex justify-between">
-          <div className="flex flex-row">
-            <img
-              src="https://www.gemini.com/favicon.ico"
-              alt=""
-              width={25}
-              className="mr-2 ml-2"
-            />
-            <p>Gemini</p>
-          </div>
-          <div>
-            <ArrowForwardIosIcon style={{ fontSize: 15 }} />
-          </div>
-        </div>
-        <div className="flex flex-row p-2 border-b border-[#000000] flex justify-between">
-          <div className="flex flex-row">
-            <img
-              src="https://assets.coinbase.com/exchange/favicon-new.ico"
-              alt=""
-              width={25}
-              className="mr-2 ml-2"
-            />
-            <p>Coinbase</p>
-          </div>
-          <div>
-            <ArrowForwardIosIcon style={{ fontSize: 15 }} />
-          </div>
+          <a href="https://www.coinbase.com/">
+            <div className="flex flex-row">
+              <img
+                src="https://assets.coinbase.com/exchange/favicon-new.ico"
+                alt=""
+                width={25}
+                className="mr-2 ml-2"
+              />
+              <p>Coinbase</p>
+            </div>
+          </a>
+          <a href="https://www.coinbase.com/">
+            <div>
+              <ArrowForwardIosIcon style={{ fontSize: 15 }} />
+            </div>
+          </a>
         </div>
 
         <div className="flex flex-row p-2 border-b border-[#000000] flex justify-between">
-          <div className="flex flex-row">
-            <img
-              src="https://www.kraken.com/favicon.ico"
-              alt=""
-              width={25}
-              className="mr-2 ml-2"
-            />
-            <p>Kraken</p>
-          </div>
-          <div>
-            <ArrowForwardIosIcon style={{ fontSize: 15 }} />
-          </div>
+          <a href="https://www.kraken.com/">
+            <div className="flex flex-row">
+              <img
+                src="https://www.kraken.com/favicon.ico"
+                alt=""
+                width={25}
+                className="mr-2 ml-2"
+              />
+              <p>Kraken</p>
+            </div>
+          </a>
+          <a href="https://www.kraken.com/">
+            <div>
+              <ArrowForwardIosIcon style={{ fontSize: 15 }} />
+            </div>
+          </a>
         </div>
         <div className="flex flex-row p-2 border-b border-[#000000] flex justify-between">
-          <div className="flex flex-row">
-            <img
-              src="https://shakepay.com/favicon.ico"
-              alt=""
-              width={25}
-              className="mr-2 ml-2"
-            />
-            <p>Sharkpay</p>
-          </div>
-          <div>
-            <ArrowForwardIosIcon style={{ fontSize: 15 }} />
-          </div>
+          <a href="https://shakepay.com/">
+            <div className="flex flex-row">
+              <img
+                src="https://shakepay.com/favicon.ico"
+                alt=""
+                width={25}
+                className="mr-2 ml-2"
+              />
+              <p>Sharkpay</p>
+            </div>
+          </a>
+          <a href="https://shakepay.com/">
+            <div>
+              <ArrowForwardIosIcon style={{ fontSize: 15 }} />
+            </div>
+          </a>
         </div>
       </div>
     </div>
