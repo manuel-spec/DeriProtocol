@@ -25,10 +25,12 @@ const Options = () => {
         </div>
         <div className="p-3 text-white text-xs text-center flex flex-col mr-3 justify-center items-center">
           <div>
-            <img src={sendIcons} alt="" width={25} />
+            <Link to="/withdrawal">
+              <img src={sendIcons} alt="" width={25} />
+            </Link>
           </div>
           <div>
-            <p>Withdrawal</p>
+            <Link to="/withdrawal">Withdrawal</Link>
           </div>
         </div>
         <div
@@ -40,14 +42,6 @@ const Options = () => {
           </div>
           <div>
             <p>Spot</p>
-          </div>
-        </div>
-        <div className="p-3 text-white text-xs text-center flex flex-col mr-3 justify-center items-center">
-          <div>
-            <img src={transferIcon} alt="" width={25} />
-          </div>
-          <div>
-            <p>Transfer</p>
           </div>
         </div>
       </div>

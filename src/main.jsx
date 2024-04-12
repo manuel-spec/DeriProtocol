@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import SignUP from "./components/Auth/SignUp.jsx";
 import TradeDetail from "./components/Trading/TradeDetail.jsx";
 import Recharge from "./components/Recharge/Recharge.jsx";
+import Withdrawal from "./components/withdrawal/Withdrawal.jsx";
 
 const ProtectedRoute = ({ element: Component }) => {
   const cookies = new Cookies();
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
       {
         path: "recharge/",
         element: <Recharge />,
+      },
+      {
+        path: "withdrawal/",
+        element: <Withdrawal />,
       },
       {
         path: "auth/register",
