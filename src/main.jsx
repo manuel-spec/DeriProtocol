@@ -17,6 +17,7 @@ import Withdrawal from "./components/withdrawal/Withdrawal.jsx";
 import RechargeDetail from "./components/Recharge/RechargeDetail.jsx";
 import HelpCenter from "./components/Help_center/HelpCenter.jsx";
 import More from "./components/Help_center/More.jsx";
+import Support from "./components/Support/Support.jsx";
 
 const ProtectedRoute = ({ element: Component }) => {
   const cookies = new Cookies();
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
       {
         path: "/trade/details",
         element: <ProtectedRoute element={TradeDetail} />,
+      },
+      {
+        path: "/support/",
+        element: <ProtectedRoute element={Support} />,
       },
       {
         path: "/perpetual",

@@ -148,7 +148,9 @@ export const Home = () => {
           </button>
         </div>
         <div>
-          <SupportAgentIcon style={{ fontSize: "35", color: "#e8ce58" }} />
+          <Link to="/support/">
+            <SupportAgentIcon style={{ fontSize: "35", color: "#e8ce58" }} />
+          </Link>
         </div>
       </div>
       <Header />
