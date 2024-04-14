@@ -22,6 +22,7 @@ const Chat = () => {
       cookies.remove("jwt");
     }
   }, []);
+  console.log(location.state.user_id);
   useEffect(() => {
     const cookies = new Cookies();
     const token = cookies.get("jwt");
@@ -31,6 +32,7 @@ const Chat = () => {
     const getMessages = () => {
       Axios.post("http://localhost:8000/api/support/list/", {
         user_id: user["user_id"],
+        to_user: location.state.user_id,
       }).then((res) => {
         setTexts(res.data);
         console.log(res.data);

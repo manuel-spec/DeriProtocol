@@ -21,8 +21,9 @@ const Support = () => {
     setUserInfo(user);
 
     const getMessages = () => {
-      Axios.post("http://localhost:8000/api/support/list/", {
+      Axios.post("http://localhost:8000/api/support/client/", {
         user_id: user["user_id"],
+        sent_to: 4,
       }).then((res) => {
         setTexts(res.data);
         console.log(res.data);
