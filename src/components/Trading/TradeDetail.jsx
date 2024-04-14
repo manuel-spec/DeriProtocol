@@ -164,6 +164,14 @@ const TradeDetail = () => {
             </div>
             <div className="flex items-center justify-between border-b border-gray-700 p-2">
               <p className="text-white text-base font-medium">
+                Purchase Price Amount:
+              </p>
+              <p className="text-white text-base font-medium">
+                {tradeDetail["purchase_price"]}
+              </p>
+            </div>
+            <div className="flex items-center justify-between border-b border-gray-700 p-2">
+              <p className="text-white text-base font-medium">
                 Trade Profit Percentage:
               </p>
               <p className="text-white text-base font-medium">

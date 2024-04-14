@@ -27,40 +27,45 @@ const SignIn = () => {
     }
   };
   return (
-    <div className=" mt-40 bg-[#0F1720]">
+    <div className="">
       <div className="flex flex-col">
-        <div className="mt-10">
-          <h2 className="text-center text-2xl text-white font-semibold">
-            SignIn
+        <div className="flex flex-row p-2">
+          <h2 className="text-3xl text-white font-bold text-[#c9c9c9] mb-5">
+            Login
           </h2>
         </div>
-        <form
-          className="flex flex-col p-10"
-          onSubmit={(event) => handleForm(event)}
-        >
-          <input
-            type="text"
-            className="bg-[#222C38] rounded px-20 py-2 text-white text-center mt-3"
-            placeholder="Email"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <input
-            type="password"
-            className="bg-[#222C38] rounded px-20 py-2 text-white text-center mt-3"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <input
-            type="submit"
-            value="Sign in"
-            className="text-white mt-10 bg-[#222c38] p-2 rounded-lg active:bg-[#F0C163] active:text-black"
-          />
+        <form className="flex flex-col" onSubmit={(event) => handleForm(event)}>
+          <div className="flex flex-row">
+            <p className="mb-5 text-white border-b-2 border-[#F0C163] text-[#BAB8B8] text-xl font-bold p-2 ml-2">
+              Email
+            </p>
+          </div>
+
+          <div className="flex flex-col p-2">
+            <input
+              type="text"
+              className="bg-[#1e2229] py-2 text-white mt-3 border-b border-[#000000]"
+              placeholder="Please enter your email address"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <input
+              type="password"
+              className="bg-[#1e2229] py-2 text-white mt-3 border-b border-[#000000]"
+              placeholder="Please enter your email password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <input
+              type="submit"
+              value="Login"
+              className="text-white mt-10 bg-[#F0C163] p-2 rounded-2xl active:bg-[#F0C163] active:text-black"
+            />
+          </div>
         </form>
-        <div className="flex flex-row justify-end mr-10">
+        <div className="flex flex-row justify-start p-2">
           <Link to="/auth/register">
-            <p className="text-white">register</p>
+            <p className="text-white text-[#c9c9c9]">Register</p>
           </Link>
         </div>
       </div>

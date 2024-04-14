@@ -30,10 +30,9 @@ const renderer = ({ hours, minutes, seconds, completed }) => {
   }
 };
 const onComplete = () => {};
-const CountDown = ({ Seconds, id, item, order, active, user }) => {
+const CountDown = ({ Seconds, id, item, order, active, user, coinPrice }) => {
   const navigate = useNavigate();
   const [currentOrder, setCurrentOrder] = useState();
-
   useEffect(() => {
     Axios.post("http://127.0.0.1:8000/api/order/get/", {
       pk: item,
@@ -56,6 +55,7 @@ const CountDown = ({ Seconds, id, item, order, active, user }) => {
       trade_profit:
         parseFloat(order["trade_amount"]) *
         (parseFloat(order["trade_percent"].slice(-2)) / 100),
+      purchase_price: coinPrice,
     })
       .then((res) => {
         console.log(res);

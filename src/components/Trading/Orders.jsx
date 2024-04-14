@@ -8,7 +8,7 @@ import CountDown from "./../Countdown";
 import { Modal } from "flowbite-react";
 import { useNavigate } from "react-router-dom";
 
-const Orders = ({ active, user }) => {
+const Orders = ({ active, user, coinPrice }) => {
   const [orders, setOrders] = useState([]);
   const [ordersDone, setDoneOrders] = useState(null);
   const navigate = useNavigate();
@@ -128,6 +128,7 @@ const Orders = ({ active, user }) => {
                       order={item}
                       active={active}
                       user={user}
+                      coinPrice={coinPrice}
                     />
                   )}
                   {parseInt(item.trade_percent.substring(0, 2)) === 30 && (
@@ -138,6 +139,7 @@ const Orders = ({ active, user }) => {
                       order={item}
                       active={active}
                       user={user}
+                      coinPrice={coinPrice}
                     />
                   )}
                   {parseInt(item.trade_percent.substring(0, 2)) === 60 && (
@@ -148,6 +150,7 @@ const Orders = ({ active, user }) => {
                       order={item}
                       active={active}
                       user={user}
+                      coinPrice={coinPrice}
                     />
                   )}
                   {parseInt(item.trade_percent.substring(0, 3)) === 120 && (
@@ -158,6 +161,7 @@ const Orders = ({ active, user }) => {
                       order={item}
                       active={active}
                       user={user}
+                      coinPrice={coinPrice}
                     />
                   )}
                   {parseInt(item.trade_percent.substring(0, 2)) === 7 && (
@@ -168,6 +172,7 @@ const Orders = ({ active, user }) => {
                       order={item}
                       active={active}
                       user={user}
+                      coinPrice={coinPrice}
                     />
                   )}
                   {parseInt(item.trade_percent.substring(0, 2)) === 24 && (
@@ -178,6 +183,7 @@ const Orders = ({ active, user }) => {
                       order={item}
                       active={active}
                       user={user}
+                      coinPrice={coinPrice}
                     />
                   )}
                   {parseInt(item.trade_percent.substring(0, 2)) === 72 && (
@@ -187,6 +193,7 @@ const Orders = ({ active, user }) => {
                       item={item.id}
                       order={item}
                       user={user}
+                      coinPrice={coinPrice}
                     />
                   )}
                   {parseInt(item.trade_percent.substring(0, 2)) === 15 && (
@@ -197,6 +204,7 @@ const Orders = ({ active, user }) => {
                       order={item}
                       active={active}
                       user={user}
+                      coinPrice={coinPrice}
                     />
                   )}
                 </div>

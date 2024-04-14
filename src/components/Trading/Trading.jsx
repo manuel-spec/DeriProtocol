@@ -14,7 +14,7 @@ const Trade = () => {
   const [tradeTime, setTradeTime] = useState();
   const [tradeAmount, setTradeAmount] = useState();
   const [transactionPeriod, setTransactionPeriod] = useState();
-  const [tradePercent, setTradePercent] = useState();
+  const [tradePercent, setTradePercent] = useState("30 - 20");
   const [open, setOpen] = useState(false);
   const [activeButton, setActiveButton] = useState("long");
   const [btcData, setBtcData] = useState(null);
@@ -79,13 +79,14 @@ const Trade = () => {
     "DOGE",
   ]);
   const [active, setActive] = useState(crypto[0]);
-
+  const [coinPrice, setCoinPrice] = useState(0.0);
   useEffect(() => {
     const ws = new WebSocket(
       `wss://stream.binance.com:9443/ws/${active.toLocaleLowerCase()}usdt@trade`
     );
     ws.onmessage = (event) => {
       setBtcData(JSON.parse(event.data));
+      setCoinPrice(parseFloat(JSON.parse(event.data).p));
       // console.log(event.data);
     };
 
@@ -587,7 +588,7 @@ const Trade = () => {
           </div>
         </div>
       </div>
-      <Orders active={active} user={user} />
+      <Orders active={active} user={user} coinPrice={coinPrice} />
     </div>
   );
 };
