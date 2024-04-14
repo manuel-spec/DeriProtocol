@@ -314,7 +314,7 @@ const Perpetual = () => {
               </div>
             </div>
             <div className="flex justify-center p-2 mt-2 text-white text-xs border border-[#242B34] rounded">
-              69702.92
+              {btcData ? parseFloat(btcData.p).toFixed(2) : "--"}
             </div>
 
             <div className="flex flex-row justify-between text-xs text-[#dddddd] mt-2">
