@@ -7,6 +7,7 @@ import DateTime from "./Datetime";
 import Axios from "axios";
 import Cookies from "universal-cookie";
 import { jwtDecode } from "jwt-decode";
+import { useLocation } from "react-router-dom";
 
 const Trade = () => {
   const [user, setUser] = useState({});
@@ -20,7 +21,7 @@ const Trade = () => {
   const [btcData, setBtcData] = useState(null);
   const [ethData, setEthData] = useState(null);
   const [xrpData, setXrpData] = useState(null);
-
+  const location = useLocation();
   var [date, setDate] = useState(new Date());
 
   useEffect(() => {
@@ -94,7 +95,7 @@ const Trade = () => {
     return () => {
       ws.close();
     };
-  }, [active]);
+  }, [active, location]);
 
   // console.log();
 
