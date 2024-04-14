@@ -1,8 +1,16 @@
+import { useState } from "react";
 import exchange_assets from "../../assets/imgs/assets/exchange_assets.png";
+import Alert from "@mui/material/Alert";
 
 const Exchange = () => {
+  const [error, setError] = useState("");
   return (
     <div>
+      {error == "Error" && (
+        <Alert variant="filled" severity="error">
+          Please Complete Advanced Identity Verification!
+        </Alert>
+      )}
       <div className="p-2">
         <div
           className="flex flex-col w-full mt-3 rounded-lg h-66  mr-3 "
@@ -19,7 +27,7 @@ const Exchange = () => {
           <div className="text-white text-sm mt-1 ml-4 font-mediumbold">
             Daily Profit: 0.00
           </div>
-          <div className="text-white ml-5">
+          <div className="text-white ml-5" onClick={() => setError("Error")}>
             <button className="border border-white px-4 py-2 rounded text-xs mb-3 m-1 hover:bg-[#FDD786]">
               Withdrawal
             </button>

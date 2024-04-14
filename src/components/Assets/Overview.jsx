@@ -5,7 +5,7 @@ import perpetual_assets from "../../assets/imgs/assets/perpetual.png";
 import finance_assets from "../../assets/imgs/assets/finance_assets.png";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 
-const Overview = () => {
+const Overview = ({ totalAssets }) => {
   return (
     <div className="flex flex-col p-3">
       <div
@@ -24,8 +24,10 @@ const Overview = () => {
             />
           </div>
         </div>
-        <div className="text-2xl font-semibold text-white ml-4">0.00</div>
-        <div className="text-white text-xs ml-4"> ≈$ 0.00</div>
+        <div className="text-2xl font-semibold text-white ml-4">
+          {totalAssets} tokens
+        </div>
+        {/* <div className="text-white text-xs ml-4"> ≈$ 0.00</div> */}
         <div className="text-white text-sm mt-5 ml-4 font-mediumbold">
           Daily Profit: 0.00
         </div>
