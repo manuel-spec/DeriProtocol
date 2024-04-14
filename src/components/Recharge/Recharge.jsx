@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
 import { useNavigate } from "react-router-dom";
+import Cookies from "universal-cookie";
 
 const Recharge = () => {
   const navigate = useNavigate();
+  const cookies = new Cookies();
+  const token = cookies.get("jwt");
+
+  useEffect(() => {
+    if (token == null) {
+      navigate("/auth/signin/");
+    }
+  }, []);
   return (
     <div className="flex flex-col">
       <div className="flex flex-row justify-between text-white">

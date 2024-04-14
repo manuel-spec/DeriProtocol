@@ -1,9 +1,19 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
+import Cookies from "universal-cookie";
 
 const Withdrawal = () => {
   const [activeCrypto, setActiveCrypto] = useState("USDT");
+  const navigate = useNavigate();
+  const cookies = new Cookies();
+  const token = cookies.get("jwt");
+
+  useEffect(() => {
+    if (token == null) {
+      navigate("/auth/signin/");
+    }
+  }, []);
   return (
     <div>
       <div className="flex flex-row justify-between text-white">

@@ -65,14 +65,7 @@ const Options = () => {
             <p>Help Center</p>
           </div>
         </div>
-        <div className="p-3 text-white text-xs text-center flex flex-col mr-3 justify-center items-center">
-          <div>
-            <img src={miningIcon} alt="" width={25} />
-          </div>
-          <div>
-            <p>Mining</p>
-          </div>
-        </div>
+
         <div
           className="p-3 text-white text-xs text-center flex flex-col mr-3 justify-center items-center"
           onClick={() => navigate("perpetual/")}
