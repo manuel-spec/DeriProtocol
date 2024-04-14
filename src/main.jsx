@@ -19,6 +19,7 @@ import HelpCenter from "./components/Help_center/HelpCenter.jsx";
 import More from "./components/Help_center/More.jsx";
 import Support from "./components/Support/Support.jsx";
 import Admin from "./components/Admin/Admin.jsx";
+import Chat from "./components/Admin/Chat.jsx";
 
 const ProtectedRoute = ({ element: Component }) => {
   const cookies = new Cookies();
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
       {
         path: "/trade",
         element: <ProtectedRoute element={Trade} />,
+      },
+      {
+        path: "/chat",
+        element: <ProtectedRoute element={Chat} />,
       },
       {
         path: "/help",

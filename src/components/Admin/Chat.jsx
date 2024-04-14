@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
+import { useLocation } from "react-router-dom";
 import SendIcon from "@mui/icons-material/Send";
 import TextField from "@mui/material/TextField";
 import IconButton from "@mui/material/IconButton";
@@ -9,11 +8,20 @@ import Axios from "axios";
 import Cookies from "universal-cookie";
 import { jwtDecode } from "jwt-decode";
 
-const Support = () => {
+const Chat = () => {
+  const location = useLocation();
   const [textToSend, setTextToSend] = useState("");
   const [texts, setTexts] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
-
+  useEffect(() => {
+    const cookies = new Cookies();
+    const token = cookies.get("jwt");
+    const userData = jwtDecode(token);
+    console.log(userData);
+    if (userData["user_id"] != 4) {
+      cookies.remove("jwt");
+    }
+  }, []);
   useEffect(() => {
     const cookies = new Cookies();
     const token = cookies.get("jwt");
@@ -38,28 +46,16 @@ const Support = () => {
     // Clear the interval when the component unmounts
     return () => clearInterval(intervalId);
   }, []);
-
   const sendMessage = () => {
     Axios.post("http://localhost:8000/api/support/send/", {
       message: textToSend,
       from_user: userInfo["user_id"],
-      to_user: 4,
+      to_user: location.state.user_id,
     }).then((res) => setTextToSend(""));
   };
+
   return (
     <div>
-      <div className="flex flex-row justify-between text-white bg-gray-800 p-4">
-        <div>
-          <Link to="/">
-            <ArrowBackIosIcon style={{ fontSize: 15 }} className="ml-2" />
-          </Link>
-        </div>
-        <div className="flex flex-row justify-center items-center">
-          <p className="text-lg font-bold">Online Customer Support</p>
-        </div>
-        <div> </div>
-      </div>
-      {/* Customer support chat body */}
       <div className="p-4">
         <div
           className="mb-4 bg-[#1F2937] rounded-lg"
@@ -119,4 +115,4 @@ const Support = () => {
   );
 };
 
-export default Support;
+export default Chat;
