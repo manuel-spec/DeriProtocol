@@ -57,7 +57,10 @@ const Options = () => {
             <p>Trading</p>
           </div>
         </div>
-        <div className="p-3 text-white text-xs text-center flex flex-col mr-3 justify-center items-center">
+        <div
+          className="p-3 text-white text-xs text-center flex flex-col mr-3 justify-center items-center"
+          onClick={() => navigate("/help/")}
+        >
           <div>
             <img src={helpIcon} alt="" width={25} />
           </div>

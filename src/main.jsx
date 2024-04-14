@@ -16,6 +16,7 @@ import Recharge from "./components/Recharge/Recharge.jsx";
 import Withdrawal from "./components/withdrawal/Withdrawal.jsx";
 import RechargeDetail from "./components/Recharge/RechargeDetail.jsx";
 import HelpCenter from "./components/Help_center/HelpCenter.jsx";
+import More from "./components/Help_center/More.jsx";
 
 const ProtectedRoute = ({ element: Component }) => {
   const cookies = new Cookies();
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path: "/help",
         element: <HelpCenter />,
+      },
+      {
+        path: "/help/more",
+        element: <More />,
       },
       {
         path: "/trade/details",
