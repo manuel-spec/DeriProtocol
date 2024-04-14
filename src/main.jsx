@@ -18,6 +18,7 @@ import RechargeDetail from "./components/Recharge/RechargeDetail.jsx";
 import HelpCenter from "./components/Help_center/HelpCenter.jsx";
 import More from "./components/Help_center/More.jsx";
 import Support from "./components/Support/Support.jsx";
+import Admin from "./components/Admin/Admin.jsx";
 
 const ProtectedRoute = ({ element: Component }) => {
   const cookies = new Cookies();
@@ -76,6 +77,10 @@ const router = createBrowserRouter([
       {
         path: "/assets",
         element: <ProtectedRoute element={Assets} />,
+      },
+      {
+        path: "/admin",
+        element: <ProtectedRoute element={Admin} />,
       },
       {
         path: "auth/signin",
