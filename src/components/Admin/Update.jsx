@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Cookies from "universal-cookie";
 import { jwtDecode } from "jwt-decode";
 import { useLocation } from "react-router-dom/dist";
+import Axios from "axios";
 
 const Update = () => {
   const location = useLocation();
@@ -14,6 +15,7 @@ const Update = () => {
       cookies.remove("jwt");
     }
   }, []);
+
   console.log(location.state.item);
 
   const [BTC_Balance, setBTC_Balance] = useState(
@@ -69,6 +71,15 @@ const Update = () => {
   const [DOGE_Balance, setDOGE_Balance] = useState(
     location.state.item.DOGE_Balance
   );
+  const BalanceUpdate = (token, newBalance) => {
+    console.log(location.state.item.id);
+    console.log(token);
+    Axios.put("http://localhost:8000/api/balance/update/", {
+      pk: location.state.item.id,
+      token: token,
+      balance: newBalance,
+    });
+  };
 
   return (
     <div>
@@ -84,7 +95,10 @@ const Update = () => {
             value={BTC_Balance}
             onChange={(e) => setBTC_Balance(e.target.value)}
           />
-          <button className="text-center px-3 text-white border rounded">
+          <button
+            className="text-center px-3 text-white border rounded"
+            onClick={() => BalanceUpdate("BTC", BTC_Balance)}
+          >
             Update
           </button>
         </div>
@@ -96,7 +110,10 @@ const Update = () => {
             value={USDT_Balance}
             onChange={(e) => setUSDT_Balance(e.target.value)}
           />
-          <button className="text-center px-3 text-white border rounded">
+          <button
+            className="text-center px-3 text-white border rounded"
+            onClick={() => BalanceUpdate("USDT", USDT_Balance)}
+          >
             Update
           </button>
         </div>
@@ -108,7 +125,10 @@ const Update = () => {
             value={ETH_Balance}
             onChange={(e) => setETH_Balance(e.target.value)}
           />
-          <button className="text-center px-3 text-white border rounded">
+          <button
+            className="text-center px-3 text-white border rounded"
+            onClick={() => BalanceUpdate("ETH", ETH_Balance)}
+          >
             Update
           </button>
         </div>
@@ -120,7 +140,10 @@ const Update = () => {
             value={ADA_Balance}
             onChange={(e) => setADA_Balance(e.target.value)}
           />
-          <button className="text-center px-3 text-white border rounded">
+          <button
+            className="text-center px-3 text-white border rounded"
+            onClick={() => BalanceUpdate("ADA", ADA_Balance)}
+          >
             Update
           </button>
         </div>
@@ -132,7 +155,10 @@ const Update = () => {
             value={BCH_Balance}
             onChange={(e) => setBCH_Balance(e.target.value)}
           />
-          <button className="text-center px-3 text-white border rounded">
+          <button
+            className="text-center px-3 text-white border rounded"
+            onClick={() => BalanceUpdate("BCH", BCH_Balance)}
+          >
             Update
           </button>
         </div>
@@ -144,7 +170,10 @@ const Update = () => {
             value={DASH_Balance}
             onChange={(e) => setDASH_Balance(e.target.value)}
           />
-          <button className="text-center px-3 text-white border rounded">
+          <button
+            className="text-center px-3 text-white border rounded"
+            onClick={() => BalanceUpdate("DASH", DASH_Balance)}
+          >
             Update
           </button>
         </div>
@@ -156,7 +185,10 @@ const Update = () => {
             value={DOT_Balance}
             onChange={(e) => setDOT_Balance(e.target.value)}
           />
-          <button className="text-center px-3 text-white border rounded">
+          <button
+            className="text-center px-3 text-white border rounded"
+            onClick={() => BalanceUpdate("DOT", DOT_Balance)}
+          >
             Update
           </button>
         </div>
@@ -168,7 +200,10 @@ const Update = () => {
             value={XRP_Balance}
             onChange={(e) => setXRP_Balance(e.target.value)}
           />
-          <button className="text-center px-3 text-white border rounded">
+          <button
+            className="text-center px-3 text-white border rounded"
+            onClick={() => BalanceUpdate("XRP", XRP_Balance)}
+          >
             Update
           </button>
         </div>
@@ -180,7 +215,10 @@ const Update = () => {
             value={LINK_Balance}
             onChange={(e) => setLINK_Balance(e.target.value)}
           />
-          <button className="text-center px-3 text-white border rounded">
+          <button
+            className="text-center px-3 text-white border rounded"
+            onClick={() => BalanceUpdate("LINK", LINK_Balance)}
+          >
             Update
           </button>
         </div>
@@ -192,7 +230,10 @@ const Update = () => {
             value={LTC_Balance}
             onChange={(e) => setLTC_Balance(e.target.value)}
           />
-          <button className="text-center px-3 text-white border rounded">
+          <button
+            className="text-center px-3 text-white border rounded"
+            onClick={() => BalanceUpdate("LTC", LTC_Balance)}
+          >
             Update
           </button>
         </div>
@@ -204,7 +245,10 @@ const Update = () => {
             value={EOS_Balance}
             onChange={(e) => setEOS_Balance(e.target.value)}
           />
-          <button className="text-center px-3 text-white border rounded">
+          <button
+            className="text-center px-3 text-white border rounded"
+            onClick={() => BalanceUpdate("EOS", EOS_Balance)}
+          >
             Update
           </button>
         </div>
@@ -216,7 +260,10 @@ const Update = () => {
             value={TRX_Balance}
             onChange={(e) => setTRX_Balance(e.target.value)}
           />
-          <button className="text-center px-3 text-white border rounded">
+          <button
+            className="text-center px-3 text-white border rounded"
+            onClick={() => BalanceUpdate("TRX", TRX_Balance)}
+          >
             Update
           </button>
         </div>
@@ -228,7 +275,10 @@ const Update = () => {
             value={XMR_Balance}
             onChange={(e) => setXMR_Balance(e.target.value)}
           />
-          <button className="text-center px-3 text-white border rounded">
+          <button
+            className="text-center px-3 text-white border rounded"
+            onClick={() => BalanceUpdate("XMR", XMR_Balance)}
+          >
             Update
           </button>
         </div>
@@ -240,7 +290,10 @@ const Update = () => {
             value={FIL_Balance}
             onChange={(e) => setFIL_Balance(e.target.value)}
           />
-          <button className="text-center px-3 text-white border rounded">
+          <button
+            className="text-center px-3 text-white border rounded"
+            onClick={() => BalanceUpdate("FIL", FIL_Balance)}
+          >
             Update
           </button>
         </div>
@@ -252,7 +305,10 @@ const Update = () => {
             value={YFI_Balance}
             onChange={(e) => setYFI_Balance(e.target.value)}
           />
-          <button className="text-center px-3 text-white border rounded">
+          <button
+            className="text-center px-3 text-white border rounded"
+            onClick={() => BalanceUpdate("YFI", YFI_Balance)}
+          >
             Update
           </button>
         </div>
@@ -264,7 +320,10 @@ const Update = () => {
             value={ZEC_Balance}
             onChange={(e) => setZEC_Balance(e.target.value)}
           />
-          <button className="text-center px-3 text-white border rounded">
+          <button
+            className="text-center px-3 text-white border rounded"
+            onClick={() => BalanceUpdate("ZEC", ZEC_Balance)}
+          >
             Update
           </button>
         </div>
@@ -276,7 +335,10 @@ const Update = () => {
             value={DOGE_Balance}
             onChange={(e) => setDOGE_Balance(e.target.value)}
           />
-          <button className="text-center px-3 text-white border rounded">
+          <button
+            className="text-center px-3 text-white border rounded"
+            onClick={() => BalanceUpdate("DOGE", DOGE_Balance)}
+          >
             Update
           </button>
         </div>
