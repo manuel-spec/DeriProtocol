@@ -10,6 +10,7 @@ const SignUP = () => {
   const [errors, setErrors] = useState(false);
   const [otpSent, setOtpSend] = useState(false);
   const [invalidOtp, setInvalidOtp] = useState(false);
+  const [existEmail, setExistEmail] = useState("");
 
   const navigate = useNavigate();
   const handleForm = async (e) => {
@@ -25,7 +26,13 @@ const SignUP = () => {
       }
     )
       .then((res) => console.log(res))
-      .catch((e) => setInvalidOtp(true));
+      .catch((e) => {
+        if (e["response"]["data"]["email"]) {
+          setExistEmail(e["response"]["data"]["email"]);
+        } else {
+          setInvalidOtp("error");
+        }
+      });
 
     if (loginResult.status == 201) {
       navigate("/auth/signin/");
@@ -62,6 +69,11 @@ const SignUP = () => {
         {invalidOtp && (
           <Alert variant="filled" severity="error">
             Please enter a valid otp code !
+          </Alert>
+        )}
+        {existEmail && existEmail.length > 0 && (
+          <Alert variant="filled" severity="error">
+            Email already registered !
           </Alert>
         )}
         <div className="flex flex-row mt-5 ">

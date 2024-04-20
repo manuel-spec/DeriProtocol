@@ -46,6 +46,11 @@ export const Home = () => {
   const handleClose = () => {
     setOpenModal(false);
   };
+  const clearCa = () => {
+    const cookies = new Cookies();
+    cookies.remove("jwt");
+    location.reload();
+  };
   return (
     <div>
       {token != null && (
@@ -106,13 +111,16 @@ export const Home = () => {
                 </div>
               </div>
               <div className=" border-b border-[#ddd] text-[#6D7177]">
-                <button className="m-4">About us</button>
+                <button className="m-4" onClick={() => navigate("/aboutus")}>
+                  About us
+                </button>
               </div>
               <div className=" border-b border-[#ddd] text-[#6D7177]">
                 <button className="m-4" onClick={() => navigate("/help")}>
                   Help center
                 </button>
               </div>
+
               {token && (
                 <div className="border-b border-[#ddd] text-[#6D7177]">
                   <button className="m-4" onClick={() => handleLogout()}>
@@ -129,6 +137,11 @@ export const Home = () => {
                   </button>
                 </div>
               )}
+              <div className=" border-b border-[#ddd] text-[#6D7177]">
+                <button className="m-4" onClick={() => clearCa()}>
+                  clear cache
+                </button>
+              </div>
             </div>
           </div>
         </div>

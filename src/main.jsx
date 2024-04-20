@@ -21,6 +21,8 @@ import Support from "./components/Support/Support.jsx";
 import Admin from "./components/Admin/Admin.jsx";
 import Chat from "./components/Admin/Chat.jsx";
 import Update from "./components/Admin/Update.jsx";
+import About from "./components/About/About.jsx";
+import ResetPassword from "./components/Auth/ResetPassword.jsx";
 
 const ProtectedRoute = ({ element: Component }) => {
   const cookies = new Cookies();
@@ -55,6 +57,14 @@ const router = createBrowserRouter([
       {
         path: "/update",
         element: <ProtectedRoute element={Update} />,
+      },
+      {
+        path: "/aboutus",
+        element: <ProtectedRoute element={About} />,
+      },
+      {
+        path: "/resetpassword",
+        element: <ResetPassword />,
       },
       {
         path: "/trade",
