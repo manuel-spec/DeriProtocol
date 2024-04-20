@@ -38,7 +38,7 @@ const Assets = () => {
         const user = jwtDecode(token);
 
         const response = await Axios.get(
-          `http://localhost:8000/api/user/${user.user_id}`
+          `https://base.tradentra.io/api/user/${user.user_id}`
         );
         setGetUser(
           response.data["BTC_Balance"] +

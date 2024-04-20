@@ -37,7 +37,7 @@ const Trade = () => {
 
       const decoded = jwtDecode(cookies.get("jwt"));
       const responce = await Axios.get(
-        `http://127.0.0.1:8000/api/user/${decoded["user_id"]}`
+        `https://base.tradentra.io/api/user/${decoded["user_id"]}`
       ).then((res) => setUser(res.data));
     };
     apiCall();
@@ -57,7 +57,7 @@ const Trade = () => {
     };
 
     const responce = await Axios.post(
-      `http://127.0.0.1:8000/api/order/create/`,
+      `https://base.tradentra.io/api/order/create/`,
       form
     ).then((res) => console.log(res.data));
   };

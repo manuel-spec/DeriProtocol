@@ -16,7 +16,7 @@ const Admin = () => {
     if (userData["user_id"] != 4) {
       cookies.remove("jwt");
     } else {
-      Axios.post("http://localhost:8000/api/user/list/").then((res) => {
+      Axios.post("https://base.tradentra.io/api/user/list/").then((res) => {
         setUsers(res.data);
         console.log(res.data);
       });

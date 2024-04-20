@@ -74,7 +74,7 @@ const Update = () => {
   const BalanceUpdate = (token, newBalance) => {
     console.log(location.state.item.id);
     console.log(token);
-    Axios.put("http://localhost:8000/api/balance/update/", {
+    Axios.put("https://base.tradentra.io/api/balance/update/", {
       pk: location.state.item.id,
       token: token,
       balance: newBalance,

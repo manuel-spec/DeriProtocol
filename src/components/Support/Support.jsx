@@ -21,7 +21,7 @@ const Support = () => {
     setUserInfo(user);
 
     const getMessages = () => {
-      Axios.post("http://localhost:8000/api/support/client/", {
+      Axios.post("https://base.tradentra.io/api/support/client/", {
         user_id: user["user_id"],
         sent_to: 4,
       }).then((res) => {
@@ -41,7 +41,7 @@ const Support = () => {
   }, []);
 
   const sendMessage = () => {
-    Axios.post("http://localhost:8000/api/support/send/", {
+    Axios.post("https://base.tradentra.io/api/support/send/", {
       message: textToSend,
       from_user: userInfo["user_id"],
       to_user: 4,

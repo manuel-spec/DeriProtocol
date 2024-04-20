@@ -106,16 +106,12 @@ export const Home = () => {
                 </div>
               </div>
               <div className=" border-b border-[#ddd] text-[#6D7177]">
-                <button className="m-4">Transaction History</button>
-              </div>
-              <div className=" border-b border-[#ddd] text-[#6D7177]">
                 <button className="m-4">About us</button>
               </div>
               <div className=" border-b border-[#ddd] text-[#6D7177]">
-                <button className="m-4">Help center</button>
-              </div>
-              <div className="border-b border-[#ddd] text-[#6D7177]">
-                <button className="m-4">Security Center</button>
+                <button className="m-4" onClick={() => navigate("/help")}>
+                  Help center
+                </button>
               </div>
               {token && (
                 <div className="border-b border-[#ddd] text-[#6D7177]">

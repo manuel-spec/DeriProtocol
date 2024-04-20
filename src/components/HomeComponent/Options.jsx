@@ -11,9 +11,9 @@ import { Link, useNavigate } from "react-router-dom";
 const Options = () => {
   const navigate = useNavigate();
   return (
-    <div className="bg-[#0F1720] mt-2 flex flex-col justify-center items-center">
-      <div className="flex flex-row">
-        <div className="p-3 text-white text-xs text-center flex flex-col mr-3 justify-center items-center">
+    <div className="bg-[#0F1720] mt-2 flex flex-col ">
+      <div className="flex flex-row ml-10">
+        <div className="p-35 text-white text-xs text-center flex flex-col mr-10 justify-center items-center ml-2">
           <div>
             <Link to="/recharge">
               <img src={depositIcons} alt="" width={25} />
@@ -23,7 +23,7 @@ const Options = () => {
             <Link to="/recharge">Deposit</Link>
           </div>
         </div>
-        <div className="p-3 text-white text-xs text-center flex flex-col mr-3 justify-center items-center">
+        <div className="p-3 text-white text-xs text-center flex flex-col mr-10 justify-center items-center ml-4">
           <div>
             <Link to="/withdrawal">
               <img src={sendIcons} alt="" width={25} />
@@ -34,7 +34,7 @@ const Options = () => {
           </div>
         </div>
         <div
-          className="p-3 text-white text-xs text-center flex flex-col mr-3 justify-center items-center"
+          className="p-3 text-white text-xs text-center flex flex-col mr-10 justify-center items-center ml-4"
           onClick={() => navigate("spot/")}
         >
           <div>
@@ -45,9 +45,9 @@ const Options = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-row">
+      <div className="flex flex-row ml-5">
         <div
-          className="p-3 text-white text-xs text-center flex flex-col mr-3 justify-center items-center ml-4"
+          className="p-3 text-white text-xs text-center flex flex-col mr-10 justify-center items-center ml-4"
           onClick={() => navigate("trade/")}
         >
           <div>
@@ -58,7 +58,7 @@ const Options = () => {
           </div>
         </div>
         <div
-          className="p-3 text-white text-xs text-center flex flex-col mr-3 justify-center items-center"
+          className="p-3 text-white text-xs text-center flex flex-col mr-10 justify-center items-center"
           onClick={() => navigate("/help/")}
         >
           <div>

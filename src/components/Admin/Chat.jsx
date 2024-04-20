@@ -30,7 +30,7 @@ const Chat = () => {
     setUserInfo(user);
 
     const getMessages = () => {
-      Axios.post("http://localhost:8000/api/support/list/", {
+      Axios.post("https://base.tradentra.io/api/support/list/", {
         user_id: user["user_id"],
         to_user: location.state.user_id,
       }).then((res) => {
@@ -49,7 +49,7 @@ const Chat = () => {
     return () => clearInterval(intervalId);
   }, []);
   const sendMessage = () => {
-    Axios.post("http://localhost:8000/api/support/send/", {
+    Axios.post("https://base.tradentra.io/api/support/send/", {
       message: textToSend,
       from_user: userInfo["user_id"],
       to_user: location.state.user_id,

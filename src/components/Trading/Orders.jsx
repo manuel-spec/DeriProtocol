@@ -19,7 +19,7 @@ const Orders = ({ active, user, coinPrice }) => {
       const decoded = jwtDecode(token);
 
       const responce = await Axios.post(
-        "http://127.0.0.1:8000/api/order/list/",
+        "https://base.tradentra.io/api/order/list/",
         {
           pk: decoded["user_id"],
         }
@@ -28,7 +28,7 @@ const Orders = ({ active, user, coinPrice }) => {
         // console.log(orders);
       });
       const responce_done = await Axios.post(
-        "http://127.0.0.1:8000/api/order/listed/",
+        "https://base.tradentra.io/api/order/listed/",
         {
           pk: decoded["user_id"],
         }

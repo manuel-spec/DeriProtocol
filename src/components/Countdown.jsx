@@ -34,7 +34,7 @@ const CountDown = ({ Seconds, id, item, order, active, user, coinPrice }) => {
   const navigate = useNavigate();
   const [currentOrder, setCurrentOrder] = useState();
   useEffect(() => {
-    Axios.post("http://127.0.0.1:8000/api/order/get/", {
+    Axios.post("https://base.tradentra.io/api/order/get/", {
       pk: item,
     }).then((res) => {
       console.log(res.data);
@@ -46,7 +46,7 @@ const CountDown = ({ Seconds, id, item, order, active, user, coinPrice }) => {
 
     const decoded = jwtDecode(cookies.get("jwt"));
 
-    await Axios.post("http://127.0.0.1:8000/api/order/created/", {
+    await Axios.post("https://base.tradentra.io/api/order/created/", {
       user: order.user,
       token_name: order.token_name,
       trade_amount: order.trade_amount,
@@ -64,7 +64,7 @@ const CountDown = ({ Seconds, id, item, order, active, user, coinPrice }) => {
         console.error(error);
       });
 
-    await Axios.put("http://127.0.0.1:8000/api/balance/update/", {
+    await Axios.put("https://base.tradentra.io/api/balance/update/", {
       pk: order.user,
       token: currentOrder["token_name"],
       balance:
@@ -76,7 +76,7 @@ const CountDown = ({ Seconds, id, item, order, active, user, coinPrice }) => {
       navigate("/");
     });
     ``;
-    await Axios.delete("http://127.0.0.1:8000/api/order/delete/", {
+    await Axios.delete("https://base.tradentra.io/api/order/delete/", {
       data: {
         pk: item,
       },

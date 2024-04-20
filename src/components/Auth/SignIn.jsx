@@ -1,34 +1,51 @@
 import { Link } from "react-router-dom";
 import Axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Cookies from "universal-cookie";
 import { useNavigate } from "react-router-dom";
+import Alert from "@mui/material/Alert";
 
 const SignIn = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState("");
 
   const navigate = useNavigate();
+  useEffect(() => {
+    console.log(errors);
+  }, [errors]);
+
   const handleForm = async (e) => {
     e.preventDefault();
 
     const loginResult = await Axios.post(
-      "http://localhost:8000/api/auth/login/",
+      "https://base.tradentra.io/api/auth/login/",
 
       {
         username: username,
         password: password,
       }
-    );
+    ).catch((e) => {
+      setErrors("error");
+    });
+    console.log(loginResult.status);
+
     if (loginResult.status == 200) {
       const cookies = new Cookies();
       cookies.set("jwt", loginResult.data["access"], { path: "/" });
       navigate("/");
     }
+    console.log(errors);
   };
+
   return (
     <div className="">
       <div className="flex flex-col">
+        {errors == "error" && (
+          <Alert variant="filled" severity="error">
+            Incorrect email or password !!
+          </Alert>
+        )}
         <div className="flex flex-row p-2">
           <h2 className="text-3xl text-white font-bold text-[#c9c9c9] mb-5">
             Login
@@ -52,7 +69,7 @@ const SignIn = () => {
             <input
               type="password"
               className="bg-[#1e2229] py-2 text-white mt-3 border-b border-[#000000]"
-              placeholder="Please enter your email password"
+              placeholder="Please enter your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
