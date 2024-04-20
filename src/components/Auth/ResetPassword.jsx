@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
+import { Alert } from "@mui/material";
 
 const ResetPassword = () => {
   const navigate = useNavigate();
@@ -13,29 +14,39 @@ const ResetPassword = () => {
   const [invalidOtp, setInvalidOtp] = useState(false);
   const [errors, setErrors] = useState(false);
   const [otpSent, setOtpSend] = useState(false);
+  const [matchError, setMatchError] = useState("");
   const handleForm = async (e) => {
     e.preventDefault();
 
-    const loginResult = Axios.post(
-      "https://base.tradentra.io/api/auth/register/",
-      {
-        username: username,
-        email: username,
-        password: password,
-        otp: otp,
-      }
-    )
-      .then((res) => console.log(res))
-      .catch((e) => {
-        console.log(e);
-      });
+    if (password === passwordRepeat) {
+      const loginResult = Axios.post(
+        "http://base.tradentra.io/api/auth/reset/password/",
+        {
+          email: username,
+          password: password,
+          otp: otp,
+        }
+      )
+        .then((res) => navigate("/auth/signin/"))
+        .catch((e) => {
+          console.log(e["response"]["status"]);
+          if (e["response"]["status"] == 406) {
+            setInvalidOtp(true);
+          } else if (e["response"]["status"] == 409) {
+            setErrors(true);
+          }
+        });
 
-    if (loginResult.status == 201) {
-      navigate("/auth/signin/");
-    } else if (loginResult.status == 206) {
-      setInvalidOtp(true);
+      if (loginResult.status == 201) {
+        navigate("/auth/signin/");
+      } else if (loginResult.status == 206) {
+        setInvalidOtp(true);
+      }
+    } else {
+      setMatchError("error");
     }
   };
+
   const validateEmail = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(username);
@@ -44,7 +55,7 @@ const ResetPassword = () => {
     if (!validateEmail()) {
       setErrors(true);
     }
-    Axios.post("https://base.tradentra.io/api/auth/register/email/", {
+    Axios.post("https://base.tradentra.io/api/auth/reset/email/", {
       email: username,
     });
     setOtpSend(true);
@@ -52,6 +63,21 @@ const ResetPassword = () => {
 
   return (
     <div className="flex flex-col">
+      {matchError.length > 0 && (
+        <Alert variant="filled" severity="error">
+          Passwords Don't Match !
+        </Alert>
+      )}
+      {invalidOtp > 0 && (
+        <Alert variant="filled" severity="error">
+          Invalid OTP provided !
+        </Alert>
+      )}
+      {errors && (
+        <Alert variant="filled" severity="error">
+          User with this email doesn't exist !
+        </Alert>
+      )}
       <div className="flex flex-row justify-between text-white">
         <div className="mt-3">
           <Link to="/auth/login">
@@ -104,7 +130,7 @@ const ResetPassword = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <input
-          type="repeat password"
+          type="password"
           className="bg-[#1e2229] py-2 text-white mt-3 border-b border-[#000000]"
           placeholder="Please enter your password again"
           value={passwordRepeat}
@@ -113,7 +139,7 @@ const ResetPassword = () => {
         />
         <input
           type="submit"
-          value="Register"
+          value="Reset"
           className="text-white mt-10 m-5  bg-[#F0C163] p-2 rounded-lg active:bg-[#F0C163] active:text-black"
         />
       </form>
