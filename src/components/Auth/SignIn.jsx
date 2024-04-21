@@ -80,7 +80,11 @@ const SignIn = () => {
             />
           </div>
         </form>
-        <div className="flex flex-row justify-start p-2">
+        <div className="flex flex-row justify-between p-2">
+          <Link to="/resetpassword">
+            <p className="text-white text-[#c9c9c9]">forgot password ?</p>
+          </Link>
+
           <Link to="/auth/register">
             <p className="text-white text-[#c9c9c9]">Register</p>
           </Link>

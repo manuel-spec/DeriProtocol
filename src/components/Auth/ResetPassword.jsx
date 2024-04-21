@@ -20,7 +20,7 @@ const ResetPassword = () => {
 
     if (password === passwordRepeat) {
       const loginResult = Axios.post(
-        "http://base.tradentra.io/api/auth/reset/password/",
+        "https://base.tradentra.io/api/auth/reset/password/",
         {
           email: username,
           password: password,
@@ -57,7 +57,7 @@ const ResetPassword = () => {
     }
     Axios.post("https://base.tradentra.io/api/auth/reset/email/", {
       email: username,
-    });
+    }).then((res) => setOtpSend(true));
     setOtpSend(true);
   };
 
@@ -66,6 +66,11 @@ const ResetPassword = () => {
       {matchError.length > 0 && (
         <Alert variant="filled" severity="error">
           Passwords Don't Match !
+        </Alert>
+      )}
+      {otpSent && (
+        <Alert severity="success">
+          Verification OTP Successfully Sent , Please Check your address !
         </Alert>
       )}
       {invalidOtp > 0 && (
@@ -97,7 +102,7 @@ const ResetPassword = () => {
           </p>
         </div>
         <input
-          type="text"
+          type="email"
           className="bg-[#1e2229] py-2 text-white mt-3 border-b border-[#000000]"
           placeholder="Please enter your email address"
           value={username}
