@@ -42,6 +42,10 @@ const Basic = () => {
           placeholder="please enter your email address"
         />
         <input
+          type="file"
+          className="text-white mt-3 bg-[#222C38] rounded-lg p-3"
+        />
+        <input
           type="submit"
           value="Submit"
           className="text-white mt-3 bg-[#F0C163] rounded-lg p-3"

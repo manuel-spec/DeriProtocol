@@ -14,6 +14,7 @@ const Assets = () => {
   const [activeComponent, setActiveComponent] = useState("Overview");
   const [getUser, setGetUser] = useState(null);
   const [totalBalance, setTotalBalance] = useState(0.0);
+  const [response, setResponse] = useState();
 
   //   "DOT",
   //   "XRP",
@@ -41,23 +42,24 @@ const Assets = () => {
           `https://base.tradentra.io/api/user/${user.user_id}`
         );
         setGetUser(
-          response.data["BTC_Balance"] +
-            response.data["ETH_Balance"] +
-            response.data["DOT_Balance"] +
-            response.data["XRP_Balance"] +
-            response.data["LINK_Balance"] +
-            response.data["BCH_Balance"] +
-            response.data["LTC_Balance"] +
-            response.data["ADA_Balance"] +
-            response.data["EOS_Balance"] +
-            response.data["TRX_Balance"] +
-            response.data["XMR_Balance"] +
-            response.data["DASH_Balance"] +
-            response.data["FIL_Balance"] +
-            response.data["YFI_Balance"] +
-            response.data["ZEC_Balance"] +
-            response.data["DOGE_Balance"]
+          response.data["BTC_Balance"] * 65012.4 +
+            response.data["ETH_Balance"] * 3158.88 +
+            response.data["DOT_Balance"] * 7.12 +
+            response.data["XRP_Balance"] * 0.5821 +
+            response.data["LINK_Balance"] * 18.84 +
+            response.data["BCH_Balance"] * 510.67 +
+            response.data["LTC_Balance"] * 84.56 +
+            response.data["ADA_Balance"] * 0.5015 +
+            response.data["EOS_Balance"] * 0.8247 +
+            response.data["TRX_Balance"] * 0.111 +
+            response.data["XMR_Balance"] * 120.07 +
+            response.data["DASH_Balance"] * 30.77 +
+            response.data["FIL_Balance"] * 6.55 +
+            response.data["YFI_Balance"] * 7133.83 +
+            response.data["ZEC_Balance"] * 22.27 +
+            response.data["DOGE_Balance"] * 0.61
         );
+        setResponse(response.data);
       } catch (error) {
         console.error("Error fetching user data:", error);
       }
@@ -118,12 +120,30 @@ const Assets = () => {
         </div>
       </div>
       <div>
-        {activeComponent == "Overview" && <Overview totalAssets={getUser} />}
+        {activeComponent == "Overview" && (
+          <Overview totalAssets={getUser} response={response} />
+        )}
       </div>
-      <div>{activeComponent == "Exchange" && <Exchange />}</div>
-      <div>{activeComponent == "Trade" && <Trade />}</div>
-      <div>{activeComponent == "Perpetual" && <Perpetual />}</div>
-      <div>{activeComponent == "Finance" && <Finance />}</div>
+      <div>
+        {activeComponent == "Exchange" && (
+          <Exchange totalAssets={getUser} response={response} />
+        )}
+      </div>
+      <div>
+        {activeComponent == "Trade" && (
+          <Trade totalAssets={getUser} response={response} />
+        )}
+      </div>
+      <div>
+        {activeComponent == "Perpetual" && (
+          <Perpetual totalAssets={getUser} response={response} />
+        )}
+      </div>
+      <div>
+        {activeComponent == "Finance" && (
+          <Finance totalAssets={getUser} response={response} />
+        )}
+      </div>
     </div>
   );
 };
