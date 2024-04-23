@@ -56,7 +56,14 @@ const RechargeDetail = () => {
           <div className="flex flex-col justify-center items-center mt-5">
             <img src={eth} alt="" width={150} />
 
-            <button className="bg-[#272F37] p-2 rounded mt-3">
+            <button
+              className="bg-[#272F37] p-2 rounded mt-3"
+              onClick={() =>
+                navigator.clipboard.writeText(
+                  "0x12001595b381a047a0bD34e830A237A17241b74E"
+                )
+              }
+            >
               Copy address
             </button>
           </div>
@@ -144,7 +151,14 @@ const RechargeDetail = () => {
           <div className="flex flex-col justify-center items-center mt-5">
             {activeButton == "ERC20" && <img src={eth} alt="" width={150} />}
             {activeButton == "TRC20" && <img src={eth} alt="" width={150} />}
-            <button className="bg-[#272F37] p-2 rounded mt-3">
+            <button
+              className="bg-[#272F37] p-2 rounded mt-3"
+              onClick={() =>
+                navigator.clipboard.writeText(
+                  "0x12001595b381a047a0bD34e830A237A17241b74E"
+                )
+              }
+            >
               Copy address
             </button>
           </div>
@@ -230,7 +244,14 @@ const RechargeDetail = () => {
           </div>
           <div className="flex flex-col justify-center items-center mt-5">
             <img src={QR1} alt="" width={150} />
-            <button className="bg-[#272F37] p-2 rounded mt-3">
+            <button
+              className="bg-[#272F37] p-2 rounded mt-3"
+              onClick={() =>
+                navigator.clipboard.writeText(
+                  "bc1q07lajrj04cejkdlwesmzv6raenz0r23ef23r3p"
+                )
+              }
+            >
               Copy address
             </button>
           </div>
@@ -316,7 +337,14 @@ const RechargeDetail = () => {
           </div>
           <div className="flex flex-col justify-center items-center mt-5">
             <img src={usdc} alt="" width={150} />
-            <button className="bg-[#272F37] p-2 rounded mt-3">
+            <button
+              className="bg-[#272F37] p-2 rounded mt-3"
+              onClick={() =>
+                navigator.clipboard.writeText(
+                  "TRgBq6dwpXsTCk28v9bPGHCvez2pzFo6Cw"
+                )
+              }
+            >
               Copy address
             </button>
           </div>
@@ -401,7 +429,14 @@ const RechargeDetail = () => {
           </div>
           <div className="flex flex-col justify-center items-center mt-5">
             <img src={dai} alt="" width={150} />
-            <button className="bg-[#272F37] p-2 rounded mt-3">
+            <button
+              className="bg-[#272F37] p-2 rounded mt-3"
+              onClick={() =>
+                navigator.clipboard.writeText(
+                  "0x12001595b381a047a0bD34e830A237A17241b74E"
+                )
+              }
+            >
               Copy address
             </button>
           </div>
