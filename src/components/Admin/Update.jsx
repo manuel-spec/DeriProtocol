@@ -80,13 +80,41 @@ const Update = () => {
       balance: newBalance,
     });
   };
+  const turnProfitOn = () => {
+    Axios.put("https://base.tradentra.io/api/profit/update/", {
+      user_id: location.state.item.id,
+      profit: 1,
+    }).then(() => alert("profit turned on"));
+  };
+  const turnProfitOff = () => {
+    Axios.put("https://base.tradentra.io/api/profit/update/", {
+      user_id: location.state.item.id,
+      profit: 0,
+    }).then((res) => alert("profit turned on"));
+  };
 
   return (
     <div>
       <div className="flex flex-row justify-center text-xl font-bold  text-white border rounded-lg p-3 ">
         Update User Balance
       </div>
+
       <div className="flex flex-col p-5 mb-10 justify-center items-center">
+        <div className="flex flex-row text-white justify-center items-center mb-5">
+          <p>Change Profit Status:</p>
+          <button
+            className="px-4 py-2 rounded bg-green-500 mr-1"
+            onClick={() => turnProfitOn()}
+          >
+            Win
+          </button>
+          <button
+            className="px-4 py-2 rounded bg-red-500"
+            onClick={() => turnProfitOff()}
+          >
+            Lose
+          </button>
+        </div>
         <div className="flex flex-row ">
           <p className="text-white mt-2 mr-2">BTC</p>
           <input
