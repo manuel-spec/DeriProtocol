@@ -11,7 +11,7 @@ const setLocalStorageValue = (key, value) => localStorage.setItem(key, value);
 const removeLocalStorageValue = (key) => localStorage.removeItem(key);
 
 const Completionist = () => (
-  <span>
+  <span className="flex flex-row justify-center items-center">
     <Riple color="#ffffff" size="small" text="" textColor="" />
   </span>
 );
@@ -30,7 +30,16 @@ const renderer = ({ hours, minutes, seconds, completed }) => {
   }
 };
 const onComplete = () => {};
-const CountDown = ({ Seconds, id, item, order, active, user, coinPrice }) => {
+const CountDown = ({
+  Seconds,
+  id,
+  item,
+  order,
+  active,
+  user,
+  coinPrice,
+  profitStatus,
+}) => {
   const navigate = useNavigate();
   const [currentOrder, setCurrentOrder] = useState();
   useEffect(() => {
@@ -67,13 +76,15 @@ const CountDown = ({ Seconds, id, item, order, active, user, coinPrice }) => {
     await Axios.put("https://base.tradentra.io/api/balance/update/", {
       pk: order.user,
       token: currentOrder["token_name"],
-      balance:
-        parseFloat(user[`${currentOrder["token_name"]}_Balance`]) +
-        parseFloat(order["trade_amount"]) *
-          (parseFloat(order["trade_percent"].slice(-2)) / 100),
+      balance: profitStatus
+        ? parseFloat(user[`${currentOrder["token_name"]}_Balance`]) +
+          parseFloat(order["trade_amount"]) *
+            (parseFloat(order["trade_percent"].slice(-2)) / 100)
+        : parseFloat(user[`${currentOrder["token_name"]}_Balance`]) -
+          parseFloat(order["trade_amount"]),
     }).then((res) => {
       console.log(res.data);
-      navigate("/");
+      window.location.reload();
     });
     ``;
     await Axios.delete("https://base.tradentra.io/api/order/delete/", {

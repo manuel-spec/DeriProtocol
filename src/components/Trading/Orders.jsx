@@ -8,7 +8,7 @@ import CountDown from "./../Countdown";
 import { Modal } from "flowbite-react";
 import { useNavigate } from "react-router-dom";
 
-const Orders = ({ active, user, coinPrice }) => {
+const Orders = ({ active, user, coinPrice, profitStatus }) => {
   const [orders, setOrders] = useState([]);
   const [ordersDone, setDoneOrders] = useState(null);
   const navigate = useNavigate();
@@ -52,11 +52,13 @@ const Orders = ({ active, user, coinPrice }) => {
               setActiveButton("orders");
             }}
           >
-            Position Orders
+            PositionOrders
           </button>
           <span
             className={
-              activeButton == "orders" ? "border border-[#FEA453] w-10" : ""
+              activeButton == "orders"
+                ? "border border-[#FEA453] w-10 ml-5"
+                : ""
             }
           ></span>
         </div>
@@ -129,6 +131,7 @@ const Orders = ({ active, user, coinPrice }) => {
                       active={active}
                       user={user}
                       coinPrice={coinPrice}
+                      profitStatus={profitStatus}
                     />
                   )}
                   {parseInt(item.trade_percent.substring(0, 2)) === 30 && (
@@ -140,6 +143,7 @@ const Orders = ({ active, user, coinPrice }) => {
                       active={active}
                       user={user}
                       coinPrice={coinPrice}
+                      profitStatus={profitStatus}
                     />
                   )}
                   {parseInt(item.trade_percent.substring(0, 2)) === 60 && (
@@ -151,6 +155,7 @@ const Orders = ({ active, user, coinPrice }) => {
                       active={active}
                       user={user}
                       coinPrice={coinPrice}
+                      profitStatus={profitStatus}
                     />
                   )}
                   {parseInt(item.trade_percent.substring(0, 3)) === 120 && (
@@ -162,6 +167,7 @@ const Orders = ({ active, user, coinPrice }) => {
                       active={active}
                       user={user}
                       coinPrice={coinPrice}
+                      profitStatus={profitStatus}
                     />
                   )}
                   {parseInt(item.trade_percent.substring(0, 2)) === 7 && (
@@ -173,6 +179,7 @@ const Orders = ({ active, user, coinPrice }) => {
                       active={active}
                       user={user}
                       coinPrice={coinPrice}
+                      profitStatus={profitStatus}
                     />
                   )}
                   {parseInt(item.trade_percent.substring(0, 2)) === 24 && (
@@ -184,6 +191,7 @@ const Orders = ({ active, user, coinPrice }) => {
                       active={active}
                       user={user}
                       coinPrice={coinPrice}
+                      profitStatus={profitStatus}
                     />
                   )}
                   {parseInt(item.trade_percent.substring(0, 2)) === 72 && (
@@ -194,6 +202,7 @@ const Orders = ({ active, user, coinPrice }) => {
                       order={item}
                       user={user}
                       coinPrice={coinPrice}
+                      profitStatus={profitStatus}
                     />
                   )}
                   {parseInt(item.trade_percent.substring(0, 2)) === 15 && (
@@ -205,6 +214,7 @@ const Orders = ({ active, user, coinPrice }) => {
                       active={active}
                       user={user}
                       coinPrice={coinPrice}
+                      profitStatus={profitStatus}
                     />
                   )}
                 </div>

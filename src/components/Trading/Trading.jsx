@@ -23,6 +23,7 @@ const Trade = () => {
   const [xrpData, setXrpData] = useState(null);
   const location = useLocation();
   var [date, setDate] = useState(new Date());
+  const [profitStatus, setProfitStatus] = useState();
 
   useEffect(() => {
     var timer = setInterval(() => setDate(new Date()), 1000);
@@ -40,7 +41,9 @@ const Trade = () => {
         `https://base.tradentra.io/api/user/${decoded["user_id"]}`
       ).then((res) => setUser(res.data));
     };
+
     apiCall();
+    setProfitStatus(user["Profit"]);
   }, []);
 
   const POSTApi = async () => {
@@ -59,7 +62,7 @@ const Trade = () => {
     const responce = await Axios.post(
       `https://base.tradentra.io/api/order/create/`,
       form
-    ).then((res) => console.log(res.data));
+    ).then((res) => window.location.reload());
   };
   const [crypto, setCrypto] = useState([
     "BTC",
@@ -589,7 +592,12 @@ const Trade = () => {
           </div>
         </div>
       </div>
-      <Orders active={active} user={user} coinPrice={coinPrice} />
+      <Orders
+        active={active}
+        user={user}
+        coinPrice={coinPrice}
+        profitStatus={profitStatus}
+      />
     </div>
   );
 };

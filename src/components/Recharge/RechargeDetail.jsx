@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
-import QR1 from "../../assets/qrs/qr1.png";
+import btc from "../../assets/qrs/btc.jpg";
+import eth from "../../assets/qrs/eth.jpg";
+import usdc from "../../assets/qrs/usdc.jpg";
+import dai from "../../assets/qrs/btc.jpg";
+
+import QR1 from "../../assets/qrs/btc.jpg";
 import QR2 from "../../assets/qrs/qr2.png";
 
 const RechargeDetail = () => {
@@ -44,24 +49,15 @@ const RechargeDetail = () => {
               className={`bg-[#272F37] px-3 py-1 rounded ml-2 ${
                 activeButton == "ERC20" && "border border-[#F0C163]"
               }`}
-              onClick={() => setActiveButton("ERC20")}
             >
-              ERC20
-            </button>
-            <button
-              className={`bg-[#272F37] px-3 py-1 rounded ml-2 ${
-                activeButton == "TRC20" && "border border-[#F0C163]"
-              }`}
-              onClick={() => setActiveButton("TRC20")}
-            >
-              TRC20
+              USDT
             </button>
           </div>
           <div className="flex flex-col justify-center items-center mt-5">
-            {activeButton == "ERC20" && <img src={QR1} alt="" width={100} />}
-            {activeButton == "TRC20" && <img src={QR2} alt="" width={100} />}
+            <img src={eth} alt="" width={150} />
+
             <button className="bg-[#272F37] p-2 rounded mt-3">
-              Save QrCode
+              Copy address
             </button>
           </div>
           <div>
@@ -69,7 +65,7 @@ const RechargeDetail = () => {
           </div>
           <div>
             <p className="ml-2 text-xs">
-              fi49r29fv992jnf88f3nn3k499dnnw2n3nv56c
+              0x12001595b381a047a0bD34e830A237A17241b74E
             </p>
           </div>
 
@@ -146,10 +142,10 @@ const RechargeDetail = () => {
             </button>
           </div>
           <div className="flex flex-col justify-center items-center mt-5">
-            {activeButton == "ERC20" && <img src={QR1} alt="" width={100} />}
-            {activeButton == "TRC20" && <img src={QR2} alt="" width={100} />}
+            {activeButton == "ERC20" && <img src={eth} alt="" width={150} />}
+            {activeButton == "TRC20" && <img src={eth} alt="" width={150} />}
             <button className="bg-[#272F37] p-2 rounded mt-3">
-              Save QrCode
+              Copy address
             </button>
           </div>
           <div>
@@ -157,7 +153,7 @@ const RechargeDetail = () => {
           </div>
           <div>
             <p className="ml-2 text-xs">
-              fi49r29fv992jnf88f3nn3k499dnnw2n3nv56c
+              0x12001595b381a047a0bD34e830A237A17241b74E
             </p>
           </div>
 
@@ -228,16 +224,14 @@ const RechargeDetail = () => {
               className={`bg-[#272F37] px-3 py-1 rounded ml-2 ${
                 activeButton == "ERC20" && "border border-[#F0C163]"
               }`}
-              onClick={() => setActiveButton("ERC20")}
             >
               BTC
             </button>
           </div>
           <div className="flex flex-col justify-center items-center mt-5">
-            {activeButton == "ERC20" && <img src={QR1} alt="" width={100} />}
-            {activeButton == "TRC20" && <img src={QR2} alt="" width={100} />}
+            <img src={QR1} alt="" width={150} />
             <button className="bg-[#272F37] p-2 rounded mt-3">
-              Save QrCode
+              Copy address
             </button>
           </div>
           <div>
@@ -245,7 +239,7 @@ const RechargeDetail = () => {
           </div>
           <div>
             <p className="ml-2 text-xs">
-              fi49r29fv992jnf88f3nn3k499dnnw2n3nv56c
+              bc1q07lajrj04cejkdlwesmzv6raenz0r23ef23r3p
             </p>
           </div>
 
@@ -316,25 +310,21 @@ const RechargeDetail = () => {
               className={`bg-[#272F37] px-3 py-1 rounded ml-2 ${
                 activeButton == "ERC20" && "border border-[#F0C163]"
               }`}
-              onClick={() => setActiveButton("ERC20")}
             >
               USDC
             </button>
           </div>
           <div className="flex flex-col justify-center items-center mt-5">
-            {activeButton == "ERC20" && <img src={QR1} alt="" width={100} />}
-            {activeButton == "TRC20" && <img src={QR2} alt="" width={100} />}
+            <img src={usdc} alt="" width={150} />
             <button className="bg-[#272F37] p-2 rounded mt-3">
-              Save QrCode
+              Copy address
             </button>
           </div>
           <div>
             <p className="text-white ml-2">Deposit address:</p>
           </div>
           <div>
-            <p className="ml-2 text-xs">
-              fi49r29fv992jnf88f3nn3k499dnnw2n3nv56c
-            </p>
+            <p className="ml-2 text-xs">TRgBq6dwpXsTCk28v9bPGHCvez2pzFo6Cw</p>
           </div>
 
           <div className="flex flex-col m-2 ">
@@ -410,10 +400,9 @@ const RechargeDetail = () => {
             </button>
           </div>
           <div className="flex flex-col justify-center items-center mt-5">
-            {activeButton == "ERC20" && <img src={QR1} alt="" width={100} />}
-            {activeButton == "TRC20" && <img src={QR2} alt="" width={100} />}
+            <img src={dai} alt="" width={150} />
             <button className="bg-[#272F37] p-2 rounded mt-3">
-              Save QrCode
+              Copy address
             </button>
           </div>
           <div>
@@ -421,7 +410,7 @@ const RechargeDetail = () => {
           </div>
           <div>
             <p className="ml-2 text-xs">
-              fi49r29fv992jnf88f3nn3k499dnnw2n3nv56c
+              0x12001595b381a047a0bD34e830A237A17241b74E
             </p>
           </div>
 
