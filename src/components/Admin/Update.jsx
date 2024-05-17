@@ -3,9 +3,13 @@ import Cookies from "universal-cookie";
 import { jwtDecode } from "jwt-decode";
 import { useLocation } from "react-router-dom/dist";
 import Axios from "axios";
+import { Alert } from "@mui/material";
+import { useNavigate } from "react-router-dom/dist";
 
 const Update = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+  console.log(localStorage.state);
   useEffect(() => {
     const cookies = new Cookies();
     const token = cookies.get("jwt");
@@ -16,7 +20,7 @@ const Update = () => {
     }
   }, []);
 
-  console.log(location.state.item);
+  console.log(location.state);
 
   const [BTC_Balance, setBTC_Balance] = useState(
     location.state.item.BTC_Balance
@@ -84,13 +88,13 @@ const Update = () => {
     Axios.put("https://base.tradentra.io/api/profit/update/", {
       user_id: location.state.item.id,
       profit: 1,
-    }).then(() => alert("profit turned on"));
+    }).then(() => navigate("/admin"));
   };
   const turnProfitOff = () => {
     Axios.put("https://base.tradentra.io/api/profit/update/", {
       user_id: location.state.item.id,
       profit: 0,
-    }).then((res) => alert("profit turned on"));
+    }).then((res) => navigate("/admin"));
   };
 
   return (
@@ -100,6 +104,18 @@ const Update = () => {
       </div>
 
       <div className="flex flex-col p-5 mb-10 justify-center items-center">
+        <div className="flex  mb-3">
+          {location.state.item.Profit == true && (
+            <Alert variant="filled" severity="success">
+              the profit status of the user is Win
+            </Alert>
+          )}
+          {location.state.item.Profit == false && (
+            <Alert variant="filled" severity="warning">
+              the profit status of the user is Lose
+            </Alert>
+          )}
+        </div>
         <div className="flex flex-row text-white justify-center items-center mb-5">
           <p>Change Profit Status:</p>
           <button
